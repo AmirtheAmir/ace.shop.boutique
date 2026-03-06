@@ -2,10 +2,8 @@ export type ProductItem = {
   id: string;
   name: string;
   image: string;
-  currencySymbol?: string; // default: €
-  currencyCode?: string; // default: EUR
-  price: number;
-  oldPrice?: number;
+  price: number;      // base price in EUR
+  oldPrice?: number;  // base old price in EUR
   soldOut?: boolean;
 };
 

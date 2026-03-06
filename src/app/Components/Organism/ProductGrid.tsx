@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCard from "../Molecules/ProductCard";
-import { itemData } from "../../../Data/ItemData";
+import { itemData } from "@/Data/ItemData";
 
 export default function ProductGrid() {
   return (
@@ -14,8 +14,6 @@ export default function ProductGrid() {
             price={item.price}
             oldPrice={item.oldPrice}
             soldOut={item.soldOut}
-            currencySymbol={item.currencySymbol}
-            currencyCode={item.currencyCode}
           />
         ))}
       </div>

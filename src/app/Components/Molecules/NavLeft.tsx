@@ -9,8 +9,8 @@ export default function NavLeft({ openMenu, setOpenMenu }: Props) {
   const toggle = (key: string) => setOpenMenu(openMenu === key ? null : key);
 
   return (
-    <div className="flex ring ring-border-primary ">
-      <NavButton label="All" />
+    <div className="flex ring ring-border-primary">
+      <NavButton label="All" onClick={() => setOpenMenu(null)} />
 
       <div className="relative">
         <NavButton
@@ -18,7 +18,6 @@ export default function NavLeft({ openMenu, setOpenMenu }: Props) {
           hasDropdown
           active={openMenu === "watches"}
           onClick={() => toggle("watches")}
-          className=""
         />
 
         {openMenu === "watches" && (
@@ -42,7 +41,6 @@ export default function NavLeft({ openMenu, setOpenMenu }: Props) {
           hasDropdown
           active={openMenu === "accessories"}
           onClick={() => toggle("accessories")}
-          className=""
         />
 
         {openMenu === "accessories" && (
@@ -64,7 +62,6 @@ export default function NavLeft({ openMenu, setOpenMenu }: Props) {
         label="AGGREGAT"
         exclusive
         onClick={() => setOpenMenu(null)}
-        className=""
       />
     </div>
   );

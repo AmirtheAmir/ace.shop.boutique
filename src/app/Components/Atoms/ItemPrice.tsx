@@ -9,7 +9,12 @@ type ItemPriceProps = {
 };
 
 function formatPrice(value: number) {
-  return value.toLocaleString("en-US");
+  const rounded = Math.round(value);
+
+  return new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(rounded);
 }
 
 export default function ItemPrice({
@@ -24,13 +29,13 @@ export default function ItemPrice({
   return (
     <div className={["flex items-center gap-2 flex-wrap", className].join(" ")}>
       {hasDiscount && (
-        <p className="font-S-500-lined text-text-primary">
+        <p className="font-XS-500 text-text-primary line-through">
           {currencySymbol}
           {formatPrice(oldPrice!)} {currencyCode}
         </p>
       )}
 
-      <p className="font-M-500 text-text-primary">
+      <p className="font-S-500 text-text-primary">
         {currencySymbol}
         {formatPrice(price)} {currencyCode}
       </p>

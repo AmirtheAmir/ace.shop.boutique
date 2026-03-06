@@ -1,21 +1,29 @@
-// src/app/components/atoms/IconButton.tsx
 import React from "react";
 
 type Props = {
   label: string;
-  onClick?: () => void;
   children: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
 };
 
-export default function IconButton({ label, onClick, children }: Props) {
+export default function IconButton({
+  label,
+  children,
+  onClick,
+  className = "",
+}: Props) {
   return (
     <button
       type="button"
       aria-label={label}
       onClick={onClick}
-      className=" hover:cursor-pointer"
+      className={[
+        " flex items-center justify-center hover:cursor-pointer",
+        "text-text-primary hover:text-text-secondary transition-colors duration-200",
+        className,
+      ].join(" ")}
     >
-      <span className="sr-only">{label}</span>
       {children}
     </button>
   );

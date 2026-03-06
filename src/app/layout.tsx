@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Google_Sans_Flex } from 'next/font/google'
-import "./globals.css"
+import { Google_Sans_Flex } from "next/font/google";
+import "./globals.css";
+import { CurrencyProvider } from "@/Context/CurrencyContext";
 
 const googleSansFlex = Google_Sans_Flex({
-  subsets: ['latin'],
-  variable: '--font-sansFlex',
-})
-
+  subsets: ["latin"],
+  variable: "--font-sansFlex",
+});
 
 export const metadata: Metadata = {
   title: "Ace Shop",
@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={`${googleSansFlex.variable} font-sans items-center justify-center flex bg-bg-base`}
       >
-        {children}
+        <CurrencyProvider>{children}</CurrencyProvider>
       </body>
     </html>
   );

@@ -6,3 +6,4 @@ export { default as DropDownIcon } from "./dropdown.svg";
 export { default as LogoIcon } from "./logo.svg";
 export { default as RightArrowIcon } from "./rightArrow.svg";
 export { default as InstagramIcon } from "./instagram.svg";
+export { default as CloseIcon } from "./close.svg";
