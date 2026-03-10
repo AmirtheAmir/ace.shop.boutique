@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import SearchResultContent from "../Molecules/SearchResultContent";
-import { itemData } from "../../../Data/ItemData";
+import { itemData } from "../../../data/ItemData";
 
 type Props = {
   query: string;

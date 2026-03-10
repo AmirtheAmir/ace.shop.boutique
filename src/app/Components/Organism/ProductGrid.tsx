@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCard from "../Molecules/ProductCard";
-import { itemData } from "@/Data/ItemData";
+import { itemData } from "@/data/ItemData";
 
 export default function ProductGrid() {
   return (

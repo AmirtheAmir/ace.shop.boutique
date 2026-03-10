@@ -7,8 +7,8 @@ import IconButton from "../Atoms/IconButton";
 import CurrencyNavButton from "../Atoms/CurrencyNavButton";
 import SearchResultOverlay from "../Organism/SearchResultOverlay";
 import { CartIcon, CloseIcon, PersonIcon } from "../../../../public/Icons";
-import { CURRENCIES } from "../../../Data/currencies";
-import { useCurrency } from "@/Context/CurrencyContext";
+import { CURRENCIES } from "../../../data/currencies";
+import { useCurrency } from "@/context/CurrencyContext";
 import styles from "./Styles.module.css";
 
 type Props = {

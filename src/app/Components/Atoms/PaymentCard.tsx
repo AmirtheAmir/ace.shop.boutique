@@ -1,21 +1,18 @@
-import Image from "next/image";
 import React from "react";
 
 type Props = {
-  src: string;
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   alt: string;
   className?: string;
 };
 
-export default function PaymentCard({ src, alt, className = "" }: Props) {
+export default function PaymentCard({ Icon, alt, className = "" }: Props) {
   return (
     <div className={["w-auto", className].join(" ")}>
-      <Image
-        src={src}
-        alt={alt}
-        width={44}
-        height={28}
-        className="object-contain"
+      <Icon
+        role="img"
+        aria-label={alt}
+        className="h-7 w-11 object-contain"
       />
     </div>
   );

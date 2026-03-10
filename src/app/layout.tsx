@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Google_Sans_Flex } from "next/font/google";
 import "./globals.css";
-import { CurrencyProvider } from "@/Context/CurrencyContext";
+import { CurrencyProvider } from "@/context/CurrencyContext";
 import NavigationBar from "@/app/Components/Organism/NavigationBar";
 import FooterBar from "@/app/Components/Organism/FooterBar";
 

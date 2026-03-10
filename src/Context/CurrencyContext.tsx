@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useMemo, useState } from "react";
-import { CURRENCIES, type Currency } from "../Data/currencies";
+import { CURRENCIES, type Currency } from "../data/currencies";
 
 type CurrencyContextType = {
   selectedCurrency: Currency;

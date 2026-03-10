@@ -1,7 +1,7 @@
 "use client";
 
 import { RightArrowIcon } from "../../../../public/Icons";
-import { ProductItem } from "../../../Data/ItemData";
+import { ProductItem } from "../../../data/ItemData";
 import SuggestionColumn from "../Atoms/SuggestionColumn";
 import ProductColumn from "../Atoms/ProductColumn";
 

@@ -3,7 +3,7 @@
 import React, { useMemo, useState } from "react";
 import FilterBar from "@/app/Components/Organism/FilterBar";
 import ProductCard from "@/app/Components/Molecules/ProductCard";
-import { itemData } from "@/Data/ItemData";
+import { itemData } from "@/data/ItemData";
 import { AvailabilityValue } from "@/app/Components/Molecules/AvailabilityFilter";
 import { PriceValue } from "@/app/Components/Molecules/PriceFilter";
 import { SortValue } from "@/app/Components/Molecules/RelevanceSort";

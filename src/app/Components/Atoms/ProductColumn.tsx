@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ProductItem } from "../../../Data/ItemData";
+import { ProductItem } from "../../../data/ItemData";
 
 type Props = {
   products: ProductItem[];

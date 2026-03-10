@@ -1,22 +1,32 @@
 import React from "react";
 import PaymentCard from "../Atoms/PaymentCard";
+import {
+  AmericanIcon,
+  AppleIcon,
+  DiscoverIcon,
+  GoogleIcon,
+  MastercardIcon,
+  PaypalIcon,
+  ShopIcon,
+  VisaIcon,
+} from "../../../../public/Icons";
 
 const payments = [
-  { src: "/Images/Apple.svg", alt: "Apple Pay" },
-  { src: "/Images/Master.svg", alt: "Mastercard" },
-  { src: "/Images/American.svg", alt: "Amex" },
-  { src: "/Images/Shop.svg", alt: "OPay" },
-  { src: "/Images/Paypal.svg", alt: "PayPal" },
-  { src: "/Images/Paypal.svg", alt: "Visa" },
-  { src: "/Images/Google.svg", alt: "Google Pay" },
-  { src: "/Images/Discover.svg", alt: "Discover" },
+  { Icon: AppleIcon, alt: "Apple Pay" },
+  { Icon: MastercardIcon, alt: "Mastercard" },
+  { Icon: AmericanIcon, alt: "Amex" },
+  { Icon: ShopIcon, alt: "OPay" },
+  { Icon: PaypalIcon, alt: "PayPal" },
+  { Icon: VisaIcon, alt: "Visa" },
+  { Icon: GoogleIcon, alt: "Google Pay" },
+  { Icon: DiscoverIcon, alt: "Discover" },
 ];
 
 export default function FooterPayments() {
   return (
     <div className="flex items-center gap-4">
       {payments.map((card) => (
-        <PaymentCard key={card.alt} src={card.src} alt={card.alt} />
+        <PaymentCard key={card.alt} Icon={card.Icon} alt={card.alt} />
       ))}
     </div>
   );

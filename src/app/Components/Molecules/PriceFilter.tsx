@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import FilterSelectButton from "../Atoms/FilterSelectButton";
 import NumberFilterInput from "../Atoms/NumberFilterInput";
-import { useCurrency } from "@/Context/CurrencyContext";
+import { useCurrency } from "@/context/CurrencyContext";
 
 export type PriceValue = { from: string; to: string } | null;
 
