@@ -9,17 +9,17 @@ type Props = {
 
 export default function ProductColumn({ products }: Props) {
   return (
-    <div className="flex min-w-0 flex-1 flex-col gap-4">
-      <h3 className="font-S-500 text-text-tertiary uppercase">Products</h3>
+    <div className="flex min-w-0 flex-1 flex-col gap-4 ">
+      <h3 className="font-M-500 text-text-tertiary uppercase">Products</h3>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2">
         {products.length > 0 ? (
           products.map((product) => (
             <div
               key={product.id}
-              className="flex items-center gap-4"
+              className="flex items-center hover:cursor-pointer gap-4 transition-all duration-300 hover:ring"
             >
-              <div className="relative h-14 w-14 shrink-0 overflow-hidden">
+              <div className="relative h-21 w-21  shrink-0 overflow-hidden">
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -28,13 +28,13 @@ export default function ProductColumn({ products }: Props) {
                 />
               </div>
 
-              <p className="font-M-500 text-text-primary">
+              <p className="font-S-500 text-text-primary">
                 {product.name}
               </p>
             </div>
           ))
         ) : (
-          <p className="font-M-500 text-text-tertiary">No products found</p>
+          <p className="font-M-500 text-text-primary">No products found</p>
         )}
       </div>
     </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import FloatingSearchInput from "../Atoms/FloatingSearchInput";
 import IconButton from "../Atoms/IconButton";
 import CurrencyNavButton from "../Atoms/CurrencyNavButton";
@@ -21,6 +22,7 @@ export default function SearchNavRow({
   setOpenMenu,
   onCloseSearch,
 }: Props) {
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const [currencyQuery, setCurrencyQuery] = useState("");
   const { selectedCurrency, setSelectedCurrency } = useCurrency();
@@ -31,24 +33,35 @@ export default function SearchNavRow({
 
     return CURRENCIES.filter(
       (c) =>
-        c.country.toLowerCase().includes(q) || c.code.toLowerCase().includes(q),
+        c.country.toLowerCase().includes(q) || c.code.toLowerCase().includes(q)
     );
   }, [currencyQuery]);
 
+  const handleSearchSubmit = () => {
+    const trimmed = query.trim();
+    if (!trimmed) return;
+
+    onCloseSearch();
+    router.push(`/search?q=${encodeURIComponent(trimmed)}`);
+  };
+
   return (
-    <div className="relative w-full ring ring-border-primary bg-bg-base">
-      <div className="relative z-60 bg-bg-base ring ring-border-primary flex w-full">
-        <div className="flex-1 min-w-0">
+    <div className="relative w-full caret-text-primary bg-bg-base ring ring-border-primary">
+      <div className="relative z-60 flex w-full bg-bg-base ring ring-border-primary">
+        <div className="min-w-0 flex-1">
           <div className="flex h-full w-full items-center">
             <FloatingSearchInput
               label="Search"
               value={query}
               onChange={setQuery}
+              onSearchClick={handleSearchSubmit}
+              onEnterPress={handleSearchSubmit}
+              autoFocus
             />
           </div>
         </div>
 
-        <div className="flex ringed-currencynavbuttonl gap-4 px-4 text-text-primary">
+        <div className="flex gap-4 px-4 text-text-primary ringed-currencynavbuttonl">
           <IconButton label="Close Search" onClick={onCloseSearch}>
             <CloseIcon />
           </IconButton>
@@ -100,13 +113,13 @@ export default function SearchNavRow({
                         setCurrencyQuery("");
                         setOpenMenu(null);
                       }}
-                      className="w-full flex items-center justify-between pl-3 font-S-500"
+                      className="flex w-full items-center justify-between pl-3 font-S-500"
                     >
                       <span
                         className={
                           isActive
-                            ? "text-text-primary font-S-500 underline underline-offset-4"
-                            : "text-text-secondary hover:underline hover:underline-offset-4 hover:text-text-primary transition-colors duration-200 ease-in"
+                            ? "font-S-500 text-text-primary underline underline-offset-4"
+                            : "text-text-secondary transition-colors duration-200 ease-in hover:text-text-primary hover:underline hover:underline-offset-4"
                         }
                       >
                         {c.country}
@@ -115,7 +128,7 @@ export default function SearchNavRow({
                       <span
                         className={
                           isActive
-                            ? "text-text-primary font-S-500"
+                            ? "font-S-500 text-text-primary"
                             : "text-text-secondary"
                         }
                       >
@@ -133,6 +146,7 @@ export default function SearchNavRow({
       <SearchResultOverlay
         query={query}
         onSuggestionClick={setQuery}
+        onCloseOverlay={onCloseSearch}
       />
     </div>
   );

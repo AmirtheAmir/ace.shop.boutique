@@ -21,10 +21,11 @@ export default function SearchResultContent({
   onSearchSubmit,
 }: Props) {
   return (
-    <div className="flex flex-col gap-8 bg-bg-base px-4 py-5 w-235.75">
-      <div className="grid grid-cols-2 gap-10">
+    <div className="flex flex-col ring ring-border-primary gap-2 bg-bg-base p-4 w-full">
+      <div className="grid grid-cols-2 gap-4">
         <SuggestionColumn
           suggestions={suggestions}
+          query={query}
           onSuggestionClick={onSuggestionClick}
         />
 
@@ -35,7 +36,7 @@ export default function SearchResultContent({
         <button
           type="button"
           onClick={onSearchSubmit}
-          className="flex items-center gap-2 font-M-500 text-text-primary hover:text-text-secondary transition-colors duration-200"
+          className="flex items-center hover:cursor-pointer gap-2 font-S-500 text-text-primary hover:text-text-secondary transition-colors duration-300"
         >
           <span>Search for “{query}”</span>
           <RightArrowIcon />

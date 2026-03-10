@@ -23,7 +23,7 @@ export default function NavButton({
       onClick={onClick}
       className={[
         " border bg-bg-base border-none ringed-navbutton ",
-        "flex items-center gap-2",
+        "flex hover:cursor-pointer select-none items-center gap-2",
         "font-S-500 text-text-primary",
           exclusive ? "hover:bg-brand-primary transition-colors duration-300 ease-in" : "",
         hasDropdown ? "py-4 pl-6 pr-4" : "py-4 px-6",

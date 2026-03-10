@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Google_Sans_Flex } from "next/font/google";
 import "./globals.css";
 import { CurrencyProvider } from "@/Context/CurrencyContext";
+import NavigationBar from "@/app/Components/Organism/NavigationBar";
+import FooterBar from "@/app/Components/Organism/FooterBar";
 
 const googleSansFlex = Google_Sans_Flex({
   subsets: ["latin"],
@@ -23,7 +25,13 @@ export default function RootLayout({
       <body
         className={`${googleSansFlex.variable} font-sans items-center justify-center flex bg-bg-base`}
       >
-        <CurrencyProvider>{children}</CurrencyProvider>
+        <CurrencyProvider>
+          <main className="max-w-7xl w-full m-2 flex flex-col gap-2">
+            <NavigationBar />
+            {children}
+            <FooterBar />
+          </main>
+        </CurrencyProvider>
       </body>
     </html>
   );

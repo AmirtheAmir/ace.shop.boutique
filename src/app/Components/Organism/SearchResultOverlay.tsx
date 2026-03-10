@@ -8,11 +8,13 @@ import { itemData } from "../../../Data/ItemData";
 type Props = {
   query: string;
   onSuggestionClick: (value: string) => void;
+  onCloseOverlay: () => void;
 };
 
 export default function SearchResultOverlay({
   query,
   onSuggestionClick,
+  onCloseOverlay,
 }: Props) {
   const router = useRouter();
 
@@ -35,7 +37,7 @@ export default function SearchResultOverlay({
       .filter((item) => {
         const matchName = item.name.toLowerCase().includes(normalizedQuery);
         const matchTag = item.tags.some((tag) =>
-          tag.toLowerCase().includes(normalizedQuery),
+          tag.toLowerCase().includes(normalizedQuery)
         );
 
         return matchName || matchTag;
@@ -46,19 +48,29 @@ export default function SearchResultOverlay({
   if (!normalizedQuery) return null;
 
   const handleSearchSubmit = () => {
-    router.push(`/search?q=${encodeURIComponent(query)}`);
+    const trimmed = query.trim();
+    if (!trimmed) return;
+
+    onCloseOverlay();
+    router.push(`/search?q=${encodeURIComponent(trimmed)}`);
+  };
+
+  const handleSuggestionSearch = (value: string) => {
+    onSuggestionClick(value);
+    onCloseOverlay();
+    router.push(`/search?q=${encodeURIComponent(value)}`);
   };
 
   return (
     <>
-      <div className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm" />
+      <div className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm " />
 
-      <div className="absolute left-0 top-full z-70 mt-0.5 w-full">
+      <div className="absolute left-0 top-full z-70 mt-px w-full ring ring-border-primary">
         <SearchResultContent
           query={query}
           suggestions={suggestions}
           products={products}
-          onSuggestionClick={onSuggestionClick}
+          onSuggestionClick={handleSuggestionSearch}
           onSearchSubmit={handleSearchSubmit}
         />
       </div>

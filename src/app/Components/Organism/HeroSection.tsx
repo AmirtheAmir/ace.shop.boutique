@@ -51,7 +51,7 @@ export default function HeroSection({
         <div className="relative h-full w-full flex justify-end">
           <div className="w-3/7 min-w-65 h-full p-4 flex flex-col justify-between text-left">
             {/* Top: subtitle + title */}
-            <div>
+            <div className="select-none">
               <h2 className="mt-4 font-2XL-600 text-text-inverted leading-[0.95]">
                 {title}
               </h2>

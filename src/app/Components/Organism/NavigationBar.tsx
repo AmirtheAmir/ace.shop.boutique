@@ -7,6 +7,7 @@ import NavRight from "../Molecules/NavRight";
 import SearchNavRow from "../Molecules/SearchNavRow";
 import AccountNavLeft from "../Molecules/AccountNavLeft";
 import { LogoIcon } from "../../../../public/Icons";
+import Link from "next/link";
 
 type NavMode = "default" | "account" | "search";
 
@@ -27,9 +28,7 @@ export default function NavigationBar() {
 
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        if (navMode === "search") {
-          setNavMode("default");
-        } else if (navMode === "account") {
+        if (navMode === "search" || navMode === "account") {
           setNavMode("default");
         }
         setOpenMenu(null);
@@ -65,7 +64,6 @@ export default function NavigationBar() {
           ) : (
             <div className="w-full ring ring-border-primary">
               <div className="flex w-full">
-                {/* Left */}
                 <div className="shrink-0">
                   {navMode === "account" ? (
                     <AccountNavLeft
@@ -77,12 +75,19 @@ export default function NavigationBar() {
                   )}
                 </div>
 
-                {/* Center */}
-                <div className="flex-1 min-w-16 bg-bg-inverted flex items-center justify-center">
-                  <LogoIcon className="text-text-inverted" />
+                <div className="flex min-w-16 flex-1 items-center justify-center bg-bg-inverted">
+                  <Link
+                    href="/"
+                    onClick={() => {
+                      setNavMode("default");
+                      setOpenMenu(null);
+                    }}
+                    className="flex items-center justify-center"
+                  >
+                    <LogoIcon className="text-text-inverted hover:opacity-80 transition-opacity duration-200" />
+                  </Link>
                 </div>
 
-                {/* Right */}
                 <div className="shrink-0">
                   <NavRight
                     openMenu={openMenu}
