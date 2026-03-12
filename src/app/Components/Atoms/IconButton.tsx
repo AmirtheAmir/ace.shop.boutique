@@ -20,7 +20,7 @@ export default function IconButton({
       onClick={onClick}
       className={[
         " flex items-center justify-center hover:cursor-pointer",
-        "text-text-primary hover:text-text-secondary transition-colors duration-200",
+        "text-text-primary hover:text-text-secondary transition-colors duration-300",
         className,
       ].join(" ")}
     >

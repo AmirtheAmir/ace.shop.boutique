@@ -40,117 +40,117 @@
 
 /* Base family: Google Sans Flex (CSS var) + fallbacks */
 .font-2XL-500 {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
   font-weight: 500;
   font-size: 92px;
   line-height: 1.1; /* 110% */
-  letter-spacing: -0.01em; /* -1% */
+  letter-spacing: 0em; /* -1% */
 }
 
 .font-2XL-600 {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
-  font-weight: 700;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
+  font-weight: 600;
   font-size: 92px;
   line-height: 1.1; /* 110% */
-  letter-spacing: -0.01em; /* -1% */
+  letter-spacing: 0em; /* -1% */
 }
 
 .font-XL-500 {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
   font-weight: 500;
   font-size: 28px;
   line-height: 1.5; /* 150% */
-  letter-spacing: -0.01em; /* -1% */
+  letter-spacing: 0em; /* -1% */
 }
 
 .font-XL-600 {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
-  font-weight: 700;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
+  font-weight: 600;
   font-size: 28px;
   line-height: 1.5; /* 150% */
-  letter-spacing: -0.01em; /* -1% */
+  letter-spacing: 0em; /* -1% */
 }
 
 .font-L-500 {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.5; /* 150% */
-  letter-spacing: 0em; /* -0% (treated as 0) */
+  letter-spacing: 0.01em; /* -0% (treated as 0) */
 }
 
 .font-L-600 {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
-  font-weight: 700;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
+  font-weight: 600;
   font-size: 20px;
   line-height: 1.5; /* 150% */
-  letter-spacing: 0em; /* -0% (treated as 0) */
+  letter-spacing: 0.01em; /* -0% (treated as 0) */
 }
 
 .font-M-500 {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.44; /* 144% */
-  letter-spacing: 0.01em; /* 1% */
+  letter-spacing: 0.02em; /* 1% */
 }
 
 .font-M-500-lined {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.44; /* 144% */
-  letter-spacing: 0.01em; /* 1% */
+  letter-spacing: 0.02em; /* 1% */
   text-decoration: line-through;
 }
 
 .font-M-600 {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
-  font-weight: 700;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
+  font-weight: 600;
   font-size: 14px;
   line-height: 1.44; /* 144% */
-  letter-spacing: 0.01em; /* 1% */
+  letter-spacing: 0.02em; /* 1% */
 }
 
 .font-S-500 {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.34; /* 134% */
-  letter-spacing: 0.02em; /* 2% */
+  letter-spacing: 0.03em; /* 2% */
 }
 
 .font-S-500-lined {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.34; /* 134% */
-  letter-spacing: 0.02em; /* 2% */
+  letter-spacing: 0.03em; /* 2% */
   text-decoration: line-through;
 }
 
 .font-S-600 {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
-  font-weight: 700;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
+  font-weight: 600;
   font-size: 12px;
   line-height: 1.34; /* 134% */
-  letter-spacing: 0.02em; /* 2% */
+  letter-spacing: 0.03em; /* 2% */
 }
 
 .font-XS-500 {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
   font-weight: 500;
   font-size: 10px;
   line-height: 1.2; /* 120% */
-  letter-spacing: 0.03em; /* 3% */
+  letter-spacing: 0.035em; /* 3% */
 }
 
 .font-XS-600 {
-  font-family: var(--font-sansFlex), system-ui, sans-serif;
-  font-weight: 700;
+  font-family: var(--font-helvetica), system-ui, sans-serif;
+  font-weight: 600;
   font-size: 10px;
   line-height: 1.2; /* 120% */
-  letter-spacing: 0.03em; /* 3% */
+  letter-spacing: 0.035em; /* 3% */
 }
 
 .ringed-navbutton {

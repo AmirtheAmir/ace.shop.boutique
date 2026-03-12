@@ -40,7 +40,7 @@ export default function HeroSection({
           className="absolute inset-0 backdrop-blur-md"
           style={{
             maskImage:
-              "radial-gradient(circle at center, transparent 70%, black 80%)",
+              "radial-gradient(circle at center, transparent 70%, black 90%)",
             WebkitMaskImage:
               "radial-gradient(circle at center, transparent 100%, black 70%)",
           }}

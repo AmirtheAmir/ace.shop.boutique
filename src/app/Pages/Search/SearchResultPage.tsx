@@ -29,7 +29,7 @@ export default function SearchResultPage({ query }: Props) {
     return itemData.filter((item) => {
       const inName = item.name.toLowerCase().includes(normalizedQuery);
       const inTags = item.tags?.some((tag: string) =>
-        tag.toLowerCase().includes(normalizedQuery)
+        tag.toLowerCase().includes(normalizedQuery),
       );
 
       return inName || inTags;
@@ -74,7 +74,7 @@ export default function SearchResultPage({ query }: Props) {
   }, [matchedProducts, availability, price, sort]);
 
   return (
-    <section className="flex flex-col gap-2 py-8">
+    <section className="flex flex-col gap-2 py-8 ">
       <h1 className="text-center py-6 select-none font-L-600 text-text-primary">
         Search Results For “{query}”
       </h1>
@@ -118,7 +118,7 @@ export default function SearchResultPage({ query }: Props) {
         resultsCount={filteredProducts.length}
       />
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {filteredProducts.map((product) => (
           <ProductCard
             key={product.id}

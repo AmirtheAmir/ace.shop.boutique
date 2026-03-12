@@ -11,6 +11,7 @@ export { default as Close16Icon } from "./close16.svg";
 export { default as FilterIcon } from "./filter.svg";
 export { default as SortIcon } from "./sort.svg";
 export { default as RadioCheckedIcon } from "./radio_checked.svg";
+export { default as RadioUncheckedIcon } from "./radio_unchecked.svg";
 export { default as AmericanIcon } from "./American.svg";
 export { default as AppleIcon } from "./Apple.svg";
 export { default as DiscoverIcon } from "./Discover.svg";

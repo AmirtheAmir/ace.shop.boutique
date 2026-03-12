@@ -69,12 +69,18 @@ export default function PriceFilter({
 
   return (
     <div ref={rootRef} className="relative">
-      <FilterSelectButton label="Price" isOpen={isOpen} onClick={handleToggle} />
+      <FilterSelectButton
+        label="Price"
+        isOpen={isOpen}
+        onClick={handleToggle}
+      />
 
       {isOpen && (
         <div className="absolute left-0 top-full z-20 min-w-53 bg-bg-base p-2 ring ring-border-primary">
           <div className="flex items-center  gap-2">
-            <span className="font-S-500 text-text-secondary">{selectedCurrency.symbol}</span>
+            <span className="font-S-500 text-text-secondary">
+              {selectedCurrency.symbol}
+            </span>
             <NumberFilterInput
               placeholder="From"
               value={draftFrom}
@@ -91,7 +97,7 @@ export default function PriceFilter({
           <button
             type="button"
             onClick={handleApply}
-            className="mt-2 w-full bg-bg-inverted hover:cursor-pointer px-4 py-3 font-S-500 text-text-inverted"
+            className="mt-2 w-full bg-brand-primary hover:cursor-pointer px-4 py-3 font-S-600 text-text-primary"
           >
             Apply
           </button>
@@ -100,5 +106,3 @@ export default function PriceFilter({
     </div>
   );
 }
-
-
