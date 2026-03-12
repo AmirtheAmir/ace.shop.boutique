@@ -20,3 +20,5 @@ export { default as MastercardIcon } from "./Master.svg";
 export { default as PaypalIcon } from "./Paypal.svg";
 export { default as ShopIcon } from "./Shop.svg";
 export { default as VisaIcon } from "./Visa.svg";
+export { default as SmileIcon } from "./smile.svg";
+export { default as Check16Icon } from "./check16.svg";

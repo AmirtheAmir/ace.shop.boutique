@@ -1,19 +1,96 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import EmailInput from "../Atoms/EmailInput";
 import InstagramButton from "../Atoms/InstagramButton";
 
+type SubmitStatus = "idle" | "typing" | "duplicate" | "success";
+
 export default function NewsletterSubscribe() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit() {
+    const cleaned = email.trim();
+
+    if (!cleaned) {
+      setStatus("idle");
+      setMessage("Please enter your email.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: cleaned }),
+      });
+
+      const data = await res.json();
+
+      if (data.status === "success") {
+        setStatus("success");
+        setMessage(data.message);
+        return;
+      }
+
+      if (data.status === "duplicate") {
+        setStatus("duplicate");
+        setMessage(data.message);
+        return;
+      }
+
+      setStatus("idle");
+      setMessage(data.message || "Something went wrong.");
+    } catch {
+      setStatus("idle");
+      setMessage("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function handleChange(value: string) {
+    setEmail(value);
+
+    if (!value.trim()) {
+      setStatus("idle");
+      setMessage("");
+      return;
+    }
+
+    if (status !== "success") {
+      setStatus("typing");
+      setMessage("");
+    }
+  }
+
   return (
     <section className="w-full py-12">
-      <div className="mx-auto flex items-start flex-col gap-4 ">
-        {/* Left Section */}
+      <div className="mx-auto flex items-start flex-col gap-4">
         <div className="flex flex-col">
           <h3 className="font-L-500 text-text-primary">
             Subscribe to our Newsletter
           </h3>
         </div>
+
         <div className="flex flex-row justify-between w-full">
-          <EmailInput />
+          <EmailInput
+            value={email}
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+            status={status}
+            message={message}
+            disabled={loading}
+          />
+
           <InstagramButton />
         </div>
       </div>
