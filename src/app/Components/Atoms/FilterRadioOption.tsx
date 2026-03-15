@@ -9,7 +9,7 @@ type Props = {
   onClick: () => void;
 };
 
-export default function RadioOption({ label, checked, onClick }: Props) {
+export default function FilterRadioOption({ label, checked, onClick }: Props) {
   return (
     <button
       type="button"

@@ -9,7 +9,7 @@ type Props = {
   className?: string;
 };
 
-export default function CurrencyNavButton({
+export default function CurrencyButton({
   country,
   code,
   symbol,
@@ -23,7 +23,7 @@ export default function CurrencyNavButton({
       onClick={onClick}
       className={[
         "  bg-bg-base border-none select-none hover:cursor-pointer flex justify-center w-57",
-        "flex items-center gap-2 ringed-currencynavbutton",
+        "flex items-center gap-2 ringed-left",
         "font-S-500 text-text-primary",
         "py-4 px-6 ",
         active
@@ -42,3 +42,4 @@ export default function CurrencyNavButton({
     </button>
   );
 }
+

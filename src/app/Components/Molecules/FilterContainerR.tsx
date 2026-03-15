@@ -2,7 +2,7 @@
 
 import React from "react";
 import { SortIcon } from "../../../../public/Icons";
-import RelevanceSort, { SortValue } from "./FilterRelevance";
+import FilterRelevance, { SortValue } from "./FilterRelevance";
 
 type Props = {
   value: SortValue;
@@ -12,7 +12,7 @@ type Props = {
   resultsCount: number;
 };
 
-export default function RightSideSort({
+export default function FilterContainerR({
   value,
   isOpen,
   onToggle,
@@ -26,7 +26,7 @@ export default function RightSideSort({
         <span>Sort By</span>
       </div>
 
-      <RelevanceSort
+      <FilterRelevance
         value={value}
         isOpen={isOpen}
         onToggle={onToggle}

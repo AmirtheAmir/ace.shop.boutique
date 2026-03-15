@@ -5,7 +5,7 @@ type ItemTitleProps = {
   className?: string;
 };
 
-export default function ItemTitle({
+export default function ProductTitle({
   children,
   className = "",
 }: ItemTitleProps) {

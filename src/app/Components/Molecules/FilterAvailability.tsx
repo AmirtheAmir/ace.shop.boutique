@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import FilterSelectButton from "../atoms/FilterButton";
-import RadioOption from "../atoms/FilterRadioOption";
+import FilterButton from "../atoms/FilterButton";
+import FilterRadioOption from "../atoms/FilterRadioOption";
 
 export type AvailabilityValue = "all" | "in-stock" | "out-of-stock" | null;
 
@@ -18,7 +18,7 @@ type Props = {
   };
 };
 
-export default function AvailabilityFilter({
+export default function FilterAvailability({
   value,
   isOpen,
   onToggle,
@@ -27,7 +27,7 @@ export default function AvailabilityFilter({
 }: Props) {
   return (
     <div className="relative">
-      <FilterSelectButton
+      <FilterButton
         label="Availability"
         isOpen={isOpen}
         onClick={onToggle}
@@ -36,12 +36,12 @@ export default function AvailabilityFilter({
       {isOpen && (
         <div className="absolute left-0 top-full z-20  min-w-53 ring ring-border-primary bg-bg-base p-2">
           <div className="flex flex-col gap-2">
-            <RadioOption
+            <FilterRadioOption
               label={`In Stock (${counts.inStock})`}
               checked={value === "in-stock"}
               onClick={() => onChange("in-stock")}
             />
-            <RadioOption
+            <FilterRadioOption
               label={`Out Of Stock (${counts.outOfStock})`}
               checked={value === "out-of-stock"}
               onClick={() => onChange("out-of-stock")}

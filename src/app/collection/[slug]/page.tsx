@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import CollectionPageView from "@/app/components/organisms/CollectionPageContainer";
+import CollectionPageContainer from "@/app/components/organisms/CollectionPageContainer";
 import { itemData } from "@/data/ItemData";
 
 const validSlugs = [
@@ -35,5 +35,5 @@ export default async function CollectionPage({ params }: PageProps) {
       ? itemData
       : itemData.filter((item) => item.collection === slug);
 
-  return <CollectionPageView slug={slug} initialProducts={products} />;
+  return <CollectionPageContainer slug={slug} initialProducts={products} />;
 }

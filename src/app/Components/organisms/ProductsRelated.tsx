@@ -10,7 +10,7 @@ function shuffleArray<T>(array: T[]) {
   return [...array].sort(() => Math.random() - 0.5);
 }
 
-export default function RelatedProducts({ currentProductId }: Props) {
+export default function ProductsRelated({ currentProductId }: Props) {
   const randomProducts = shuffleArray(
     itemData.filter((item) => item.id !== currentProductId)
   ).slice(0, 3);

@@ -17,7 +17,7 @@ function formatPrice(value: number) {
   }).format(rounded);
 }
 
-export default function ItemPrice({
+export default function ProductPrice({
   price,
   oldPrice,
   currencySymbol = "€",
@@ -42,3 +42,4 @@ export default function ItemPrice({
     </div>
   );
 }
+

@@ -8,7 +8,7 @@ type Props = {
   onProductClick?: () => void;
 };
 
-export default function ProductColumn({
+export default function SearchOverlayProducts({
   products,
   onProductClick = () => {},
 }: Props) {
@@ -40,3 +40,4 @@ export default function ProductColumn({
     </div>
   );
 }
+

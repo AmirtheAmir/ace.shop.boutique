@@ -1,8 +1,8 @@
-﻿"use client";
+"use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import FilterSelectButton from "../atoms/FilterButton";
-import NumberFilterInput from "../atoms/FilterPriceRangeInput";
+import FilterButton from "../atoms/FilterButton";
+import FilterPriceRangeInput from "../atoms/FilterPriceRangeInput";
 import { useCurrency } from "@/context/CurrencyContext";
 
 export type PriceValue = { from: string; to: string } | null;
@@ -14,7 +14,7 @@ type Props = {
   onChange: (value: PriceValue) => void;
 };
 
-export default function PriceFilter({
+export default function FilterPrice({
   value,
   isOpen,
   onToggle,
@@ -69,7 +69,7 @@ export default function PriceFilter({
 
   return (
     <div ref={rootRef} className="relative">
-      <FilterSelectButton
+      <FilterButton
         label="Price"
         isOpen={isOpen}
         onClick={handleToggle}
@@ -81,13 +81,13 @@ export default function PriceFilter({
             <span className="font-S-500 text-text-secondary">
               {selectedCurrency.symbol}
             </span>
-            <NumberFilterInput
+            <FilterPriceRangeInput
               placeholder="From"
               value={draftFrom}
               onChange={setDraftFrom}
             />
 
-            <NumberFilterInput
+            <FilterPriceRangeInput
               placeholder="To"
               value={draftTo}
               onChange={setDraftTo}
@@ -106,3 +106,4 @@ export default function PriceFilter({
     </div>
   );
 }
+

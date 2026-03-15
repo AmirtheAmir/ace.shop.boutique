@@ -7,7 +7,7 @@ type Props = {
   className?: string;
 };
 
-export default function IconButton({
+export default function NavigationIconButton({
   label,
   children,
   onClick,

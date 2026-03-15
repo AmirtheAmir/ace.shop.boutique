@@ -35,46 +35,47 @@ export default function HeroSection({
         />
 
         {/* Dark overlays */}
-        <div className="absolute inset-0 bg-black/30" aria-hidden="true" />
+        <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
         <div
           className="absolute inset-0 backdrop-blur-md"
           style={{
             maskImage:
-              "radial-gradient(circle at center, transparent 70%, black 90%)",
+              "radial-gradient(circle at center, transparent 50%, black 90%)",
             WebkitMaskImage:
-              "radial-gradient(circle at center, transparent 100%, black 70%)",
+              "radial-gradient(circle at center, transparent 60%, black 90%)",
           }}
           aria-hidden="true"
         />
 
         {/* Content wrapper: right aligned block, left aligned text inside */}
-        <div className="relative h-full w-full flex justify-end">
-          <div className="w-3/7 min-w-65 h-full p-4 flex flex-col justify-between text-left">
+        <div className="relative h-full w-full flex  justify-end">
+          <div className="w-1/2 content-in h-full p-4 @container flex flex-col justify-between text-left">
             {/* Top: subtitle + title */}
-            <div className="select-none">
+            <div className="select-none @container ">
               <h2 className="mt-4 font-2XL-600 text-text-inverted leading-[0.95]">
                 {title}
               </h2>
-              <p className="font-L-600 text-text-inverted">{subtitle}</p>
+              <p className="font-L-600-clamp  text-text-inverted">{subtitle}</p>
             </div>
-
             {/* Bottom: CTA bar */}
-            <button
-              type="button"
-              onClick={onCtaClick}
-              className={[
-                "w-full py-3.5 font-M-600",
-                "flex items-center justify-center gap-3",
-                "text-brand-primary",
-                "border border-brand-primary",
-                "bg-transparent hover:cursor-pointer hover:bg-black/35 transition-colors duration-300 ease-in",
-              ].join(" ")}
-            >
-              {ctaLabel}
-              <span className="inline-flex items-center justify-center ">
-                <RightArrowIcon />
-              </span>
-            </button>
+            <div className="flex w-full justify-end">
+              <button
+                type="button"
+                onClick={onCtaClick}
+                className={[
+                  " py-3.5 pl-9 pr-6 self-start font-M-600",
+                  "flex items-center justify-center gap-2",
+                  "text-brand-primary",
+                  "border border-brand-primary",
+                  "bg-transparent hover:cursor-pointer hover:bg-brand-primary hover:text-text-primary transition-colors duration-300 ease-in",
+                ].join(" ")}
+              >
+                {ctaLabel}
+                <span className="inline-flex items-center justify-center ">
+                  <RightArrowIcon />
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import IconButton from "../atoms/NavigationIconButton";
-import CurrencyNavButton from "../atoms/CurrencyButton";
+import NavigationIconButton from "../atoms/NavigationIconButton";
+import CurrencyButton from "../atoms/CurrencyButton";
 import { CartIcon, PersonIcon, SearchIcon } from "../../../../public/Icons";
 import { CURRENCIES } from "../../../data/currencies";
 import { useCurrency } from "@/context/CurrencyContext";
 import styles from "./Styles.module.css";
-import FloatingSearchInputCurrency from "../atoms/CurrencySearchInput";
+import CurrencySearchInput from "../atoms/CurrencySearchInput";
 
 type NavMode = "default" | "account" | "search";
 
@@ -18,7 +18,7 @@ type Props = {
   setNavMode: (v: NavMode) => void;
 };
 
-export default function NavRight({
+export default function NavigationItemIcons({
   openMenu,
   setOpenMenu,
   navMode,
@@ -46,7 +46,7 @@ export default function NavRight({
   return (
     <div className="flex ring ring-border-primary">
       <div className="flex flex-row gap-4 bg-bg-base items-center justify-center px-4 text-text-primary">
-        <IconButton
+        <NavigationIconButton
           label="Search"
           onClick={() => {
             setNavMode("search");
@@ -55,9 +55,9 @@ export default function NavRight({
           }}
         >
           <SearchIcon />
-        </IconButton>
+        </NavigationIconButton>
 
-        <IconButton
+        <NavigationIconButton
           label="Account"
           onClick={() => {
             setNavMode(navMode === "account" ? "default" : "account");
@@ -65,15 +65,15 @@ export default function NavRight({
           }}
         >
           <PersonIcon />
-        </IconButton>
+        </NavigationIconButton>
 
-        <IconButton label="Cart">
+        <NavigationIconButton label="Cart">
           <CartIcon />
-        </IconButton>
+        </NavigationIconButton>
       </div>
 
       <div className="relative">
-        <CurrencyNavButton
+        <CurrencyButton
           country={selectedCurrency.country}
           code={selectedCurrency.code}
           symbol={selectedCurrency.symbol}
@@ -83,7 +83,7 @@ export default function NavRight({
 
         {openMenu === "currency" && (
           <div className="absolute right-0 top-12.25 gap-2 p-3 flex flex-col z-50 w-84 bg-bg-base ring ring-border-primary">
-            <FloatingSearchInputCurrency
+            <CurrencySearchInput
               label="Search"
               value={query}
               onChange={setQuery}
@@ -137,3 +137,4 @@ export default function NavRight({
     </div>
   );
 }
+

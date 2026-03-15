@@ -2,9 +2,9 @@
 
 import React, { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import FloatingSearchInput from "../atoms/SearchInput";
-import IconButton from "../atoms/NavigationIconButton";
-import CurrencyNavButton from "../atoms/CurrencyButton";
+import SearchInput from "../atoms/SearchInput";
+import NavigationIconButton from "../atoms/NavigationIconButton";
+import CurrencyButton from "../atoms/CurrencyButton";
 import SearchResultOverlay from "../organisms/SearchResultOverlay";
 import { CartIcon, CloseIcon, PersonIcon } from "../../../../public/Icons";
 import { CURRENCIES } from "../../../data/currencies";
@@ -17,7 +17,7 @@ type Props = {
   onCloseSearch: () => void;
 };
 
-export default function SearchNavRow({
+export default function NavigationSearchMode({
   openMenu,
   setOpenMenu,
   onCloseSearch,
@@ -50,7 +50,7 @@ export default function SearchNavRow({
       <div className="relative z-60 flex w-full bg-bg-base ring ring-border-primary">
         <div className="min-w-0 flex-1">
           <div className="flex h-full w-full items-center">
-            <FloatingSearchInput
+            <SearchInput
               label="Search"
               value={query}
               onChange={setQuery}
@@ -62,21 +62,21 @@ export default function SearchNavRow({
         </div>
 
         <div className="flex gap-4 px-4 text-text-primary ringed-currencynavbuttonl">
-          <IconButton label="Close Search" onClick={onCloseSearch}>
+          <NavigationIconButton label="Close Search" onClick={onCloseSearch}>
             <CloseIcon />
-          </IconButton>
+          </NavigationIconButton>
 
-          <IconButton label="Account">
+          <NavigationIconButton label="Account">
             <PersonIcon />
-          </IconButton>
+          </NavigationIconButton>
 
-          <IconButton label="Cart">
+          <NavigationIconButton label="Cart">
             <CartIcon />
-          </IconButton>
+          </NavigationIconButton>
         </div>
 
         <div className="relative">
-          <CurrencyNavButton
+          <CurrencyButton
             country={selectedCurrency.country}
             code={selectedCurrency.code}
             symbol={selectedCurrency.symbol}
@@ -90,7 +90,7 @@ export default function SearchNavRow({
 
           {openMenu === "currency" && (
             <div className="absolute right-0 top-12.25 z-50 flex w-84 flex-col gap-2 bg-bg-base p-3 ring ring-border-primary">
-              <FloatingSearchInput
+              <SearchInput
                 label="Search"
                 value={currencyQuery}
                 onChange={setCurrencyQuery}
@@ -151,3 +151,4 @@ export default function SearchNavRow({
     </div>
   );
 }
+

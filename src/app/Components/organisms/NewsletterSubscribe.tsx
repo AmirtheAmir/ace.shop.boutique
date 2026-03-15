@@ -2,7 +2,7 @@
 
 import React, { useCallback, useState } from "react";
 import EmailInput from "../atoms/EmailInput";
-import InstagramButton from "../atoms/SocialIconButton";
+import SocialIconButton from "../atoms/SocialIconButton";
 
 type SubmitStatus = "idle" | "typing" | "duplicate" | "success";
 
@@ -89,9 +89,10 @@ export default function NewsletterSubscribe() {
             disabled={loading}
           />
 
-          <InstagramButton className="self-start" />
+          <SocialIconButton className="self-start" />
         </div>
       </div>
     </section>
   );
 }
+

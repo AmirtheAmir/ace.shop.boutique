@@ -7,7 +7,7 @@ type Props = {
   className?: string;
 };
 
-export default function InstagramButton({
+export default function SocialIconButton({
   label = "Follow us on Instagram",
   onClick,
   className = "",
@@ -30,3 +30,4 @@ export default function InstagramButton({
     </button>
   );
 }
+

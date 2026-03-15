@@ -10,7 +10,7 @@ type Props = {
   gallery: string[];
 };
 
-export default function ProductGallery({ name, mainImage, gallery }: Props) {
+export default function ProductPagesSideGallery({ name, mainImage, gallery }: Props) {
   const images = useMemo(() => [mainImage, ...gallery], [mainImage, gallery]);
   const [selectedImage, setSelectedImage] = useState(mainImage);
 

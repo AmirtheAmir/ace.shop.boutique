@@ -12,7 +12,7 @@ type Props = {
   autoFocus?: boolean;
 };
 
-export default function FloatingSearchInput({
+export default function SearchInput({
   label,
   value,
   onChange,
@@ -24,7 +24,7 @@ export default function FloatingSearchInput({
   const active = value.length > 0 || isFocused;
 
   return (
-    <div className="relative h-full w-full caret-text-primary px-3.5 flex items-center justify-between gap-3 ringed-navbutton">
+    <div className="relative h-full w-full caret-text-primary px-3.5 flex items-center justify-between gap-3 ringed-right">
       <div className="relative flex-1 h-full flex items-end">
         <label
           className={[
@@ -64,3 +64,4 @@ export default function FloatingSearchInput({
     </div>
   );
 }
+

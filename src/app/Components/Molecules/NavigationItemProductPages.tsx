@@ -1,22 +1,22 @@
 import Link from "next/link";
-import NavButton from "../atoms/NavigationLink";
+import NavigationLink from "../atoms/NavigationLink";
 
 type Props = {
   openMenu: string | null;
   setOpenMenu: (v: string | null) => void;
 };
 
-export default function NavLeft({ openMenu, setOpenMenu }: Props) {
+export default function NavigationItemProductPages({ openMenu, setOpenMenu }: Props) {
   const toggle = (key: string) => setOpenMenu(openMenu === key ? null : key);
 
   return (
     <div className="flex ring ring-border-primary">
       <Link href="/collection/all" onClick={() => setOpenMenu(null)}>
-        <NavButton label="All" />
+        <NavigationLink label="All" />
       </Link>
 
       <div className="relative">
-        <NavButton
+        <NavigationLink
           label="Watches"
           hasDropdown
           active={openMenu === "watches"}
@@ -45,7 +45,7 @@ export default function NavLeft({ openMenu, setOpenMenu }: Props) {
       </div>
 
       <div className="relative">
-        <NavButton
+        <NavigationLink
           label="Accessories"
           hasDropdown
           active={openMenu === "accessories"}
@@ -74,7 +74,7 @@ export default function NavLeft({ openMenu, setOpenMenu }: Props) {
       </div>
 
       <Link href="/collection/aggregat" onClick={() => setOpenMenu(null)}>
-        <NavButton label="AGGREGAT" exclusive />
+        <NavigationLink label="AGGREGAT" exclusive />
       </Link>
     </div>
   );

@@ -9,7 +9,7 @@ type Props = {
   className?: string;
 };
 
-export default function NavButton({
+export default function NavigationLink({
   label,
   active = false,
   hasDropdown = false,
@@ -22,7 +22,7 @@ export default function NavButton({
       type="button"
       onClick={onClick}
       className={[
-        " border bg-bg-base border-none ringed-navbutton ",
+        " border bg-bg-base border-none ringed-right ",
         "flex hover:cursor-pointer select-none items-center gap-2",
         "font-S-500 text-text-primary",
           exclusive ? "hover:bg-brand-primary transition-colors duration-300 ease-in" : "",
@@ -45,3 +45,4 @@ export default function NavButton({
     </button>
   );
 }
+

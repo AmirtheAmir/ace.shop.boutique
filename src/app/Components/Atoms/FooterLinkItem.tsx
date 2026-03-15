@@ -6,7 +6,7 @@ type Props = {
   className?: string;
 };
 
-export default function FooterLink({
+export default function FooterLinkItem({
   label,
   href = "#",
   className = "",

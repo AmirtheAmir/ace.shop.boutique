@@ -2,16 +2,16 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Overlay from "../atoms/Overlay";
-import NavLeft from "../molecules/NavigationItemProductPages";
-import NavRight from "../molecules/NavigationItemIcons";
-import SearchNavRow from "../molecules/NavigationSearchMode";
-import AccountNavLeft from "../molecules/NavigationItemAccount";
+import NavigationItemProductPages from "../molecules/NavigationItemProductPages";
+import NavigationItemIcons from "../molecules/NavigationItemIcons";
+import NavigationSearchMode from "../molecules/NavigationSearchMode";
+import NavigationItemAccount from "../molecules/NavigationItemAccount";
 import { LogoIcon } from "../../../../public/Icons";
 import Link from "next/link";
 
 type NavMode = "default" | "account" | "search";
 
-export default function NavigationBar() {
+export default function Navigation() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [navMode, setNavMode] = useState<NavMode>("default");
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -53,7 +53,7 @@ export default function NavigationBar() {
       <div className="sticky top-2 z-50 w-full bg-bg-base">
         <div ref={rootRef} className="w-full">
           {navMode === "search" ? (
-            <SearchNavRow
+            <NavigationSearchMode
               openMenu={openMenu}
               setOpenMenu={setOpenMenu}
               onCloseSearch={() => {
@@ -66,12 +66,12 @@ export default function NavigationBar() {
               <div className="flex w-full">
                 <div className="shrink-0">
                   {navMode === "account" ? (
-                    <AccountNavLeft
+                    <NavigationItemAccount
                       onSignOut={() => setNavMode("default")}
                       onBackToDefault={() => setNavMode("default")}
                     />
                   ) : (
-                    <NavLeft openMenu={openMenu} setOpenMenu={setOpenMenu} />
+                    <NavigationItemProductPages openMenu={openMenu} setOpenMenu={setOpenMenu} />
                   )}
                 </div>
 
@@ -89,7 +89,7 @@ export default function NavigationBar() {
                 </div>
 
                 <div className="shrink-0">
-                  <NavRight
+                  <NavigationItemIcons
                     openMenu={openMenu}
                     setOpenMenu={setOpenMenu}
                     navMode={navMode}
@@ -104,3 +104,4 @@ export default function NavigationBar() {
     </>
   );
 }
+

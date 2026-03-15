@@ -6,7 +6,7 @@ type Props = {
   className?: string;
 };
 
-export default function PaymentCard({ Icon, alt, className = "" }: Props) {
+export default function FooterPaymentBadge({ Icon, alt, className = "" }: Props) {
   return (
     <div className={["w-auto", className].join(" ")}>
       <Icon
@@ -17,3 +17,4 @@ export default function PaymentCard({ Icon, alt, className = "" }: Props) {
     </div>
   );
 }
+

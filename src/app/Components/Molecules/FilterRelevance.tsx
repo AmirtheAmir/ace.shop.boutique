@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import FilterSelectButton from "../atoms/FilterButton";
-import RadioOption from "../atoms/FilterRadioOption";
+import FilterButton from "../atoms/FilterButton";
+import FilterRadioOption from "../atoms/FilterRadioOption";
 
 export type SortValue = "relevance" | "price-low-high" | "price-high-low" | null;
 
@@ -13,7 +13,7 @@ type Props = {
   onChange: (value: SortValue) => void;
 };
 
-export default function RelevanceSort({
+export default function FilterRelevance({
   value,
   isOpen,
   onToggle,
@@ -21,7 +21,7 @@ export default function RelevanceSort({
 }: Props) {
   return (
     <div className="relative">
-      <FilterSelectButton
+      <FilterButton
         label={
           value === "price-low-high"
             ? "Price, Low to High"
@@ -36,19 +36,19 @@ export default function RelevanceSort({
       {isOpen && (
         <div className="absolute right-0  top-full z-20 min-w-53 bg-bg-base p-2 ring ring-border-primary">
           <div className="flex flex-col gap-2">
-            <RadioOption
+            <FilterRadioOption
               label="Relevance"
               checked={value === null || value === "relevance"}
               onClick={() => onChange("relevance")}
             />
 
-            <RadioOption
+            <FilterRadioOption
               label="Price, Low to High"
               checked={value === "price-low-high"}
               onClick={() => onChange("price-low-high")}
             />
 
-            <RadioOption
+            <FilterRadioOption
               label="Price, High to Low"
               checked={value === "price-high-low"}
               onClick={() => onChange("price-high-low")}

@@ -9,7 +9,7 @@ type Props = {
   onClick: () => void;
 };
 
-export default function FilterSelectButton({
+export default function FilterButton({
   label,
   isOpen,
   onClick,

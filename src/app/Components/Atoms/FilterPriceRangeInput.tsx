@@ -8,7 +8,7 @@ type Props = {
   onChange: (value: string) => void;
 };
 
-export default function NumberFilterInput({
+export default function FilterPriceRangeInput({
   placeholder,
   value,
   onChange,

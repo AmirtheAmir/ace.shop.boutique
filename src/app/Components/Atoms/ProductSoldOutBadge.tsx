@@ -4,7 +4,7 @@ type SoldOutBadgeProps = {
   className?: string;
 };
 
-export default function SoldOutBadge({
+export default function ProductSoldOutBadge({
   className = "",
 }: SoldOutBadgeProps) {
   return (

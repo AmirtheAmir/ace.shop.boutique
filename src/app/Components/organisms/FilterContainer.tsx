@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import LeftSideFilter from "../molecules/FilterContainerAP";
-import RightSideSort from "../molecules/FilterContainerR";
+import FilterContainerAP from "../molecules/FilterContainerAP";
+import FilterContainerR from "../molecules/FilterContainerR";
 import { AvailabilityValue } from "../molecules/FilterAvailability";
 import { PriceValue } from "../molecules/FilterPrice";
 import { SortValue } from "../molecules/FilterRelevance";
@@ -33,7 +33,7 @@ type Props = {
   resultsCount: number;
 };
 
-export default function FilterBar({
+export default function FilterContainer({
   showPrice = true,
   availabilityValue,
   priceValue,
@@ -56,7 +56,7 @@ export default function FilterBar({
   return (
     <div className="flex flex-col py-2 h-28 select-none">
       <div className="flex items-start justify-between">
-        <LeftSideFilter
+        <FilterContainerAP
           showPrice={showPrice}
           availabilityValue={availabilityValue}
           priceValue={priceValue}
@@ -69,7 +69,7 @@ export default function FilterBar({
           counts={counts}
         />
 
-        <RightSideSort
+        <FilterContainerR
           value={sortValue}
           isOpen={sortOpen}
           onToggle={onToggleSort}

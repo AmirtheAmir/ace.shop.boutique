@@ -50,7 +50,7 @@ function highlightMatch(text: string, query: string) {
   );
 }
 
-export default function SuggestionColumn({
+export default function SearchOverlaySuggestion({
   suggestions,
   query,
   onSuggestionClick,

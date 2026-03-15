@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import ProductCard from "../molecules/ProductCard";
-import FilterBar from "./FilterContainer";
+import FilterContainer from "./FilterContainer";
 import { AvailabilityValue } from "../molecules/FilterAvailability";
 import { SortValue } from "../molecules/FilterRelevance";
 import { ProductItem } from "@/data/ItemData";
@@ -21,7 +21,7 @@ const titles: Record<Props["slug"], string> = {
   aggregat: "AGGREGAT Collection",
 };
 
-export default function CollectionPageView({
+export default function CollectionPageContainer({
   slug,
   initialProducts,
 }: Props) {
@@ -68,7 +68,7 @@ export default function CollectionPageView({
     <section className="flex flex-col gap-2 py-8">
       <h1 className="text-center py-6 select-none font-L-600 text-text-primary uppercase">{titles[slug]}</h1>
 
-      <FilterBar
+      <FilterContainer
         showPrice={false}
         availabilityValue={availability}
         priceValue={{ from: "", to: "" }}
@@ -123,3 +123,4 @@ export default function CollectionPageView({
     </section>
   );
 }
+

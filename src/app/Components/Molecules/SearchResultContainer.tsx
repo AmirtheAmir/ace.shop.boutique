@@ -2,8 +2,8 @@
 
 import { RightArrowIcon } from "../../../../public/Icons";
 import { ProductItem } from "../../../data/ItemData";
-import SuggestionColumn from "../atoms/SearchOverlaySuggestion";
-import ProductColumn from "../atoms/SearchOverlayProducts";
+import SearchOverlaySuggestion from "../atoms/SearchOverlaySuggestion";
+import SearchOverlayProducts from "../atoms/SearchOverlayProducts";
 
 type Props = {
   query: string;
@@ -14,7 +14,7 @@ type Props = {
   onProductClick: () => void;
 };
 
-export default function SearchResultContent({
+export default function SearchResultContainer({
   query,
   suggestions,
   products,
@@ -25,13 +25,13 @@ export default function SearchResultContent({
   return (
     <div className="flex flex-col ring ring-border-primary gap-2 bg-bg-base p-4 w-full">
       <div className="grid grid-cols-2 gap-4">
-        <SuggestionColumn
+        <SearchOverlaySuggestion
           suggestions={suggestions}
           query={query}
           onSuggestionClick={onSuggestionClick}
         />
 
-        <ProductColumn products={products} onProductClick={onProductClick} />
+        <SearchOverlayProducts products={products} onProductClick={onProductClick} />
       </div>
 
       <div className="flex justify-end">
@@ -47,3 +47,4 @@ export default function SearchResultContent({
     </div>
   );
 }
+

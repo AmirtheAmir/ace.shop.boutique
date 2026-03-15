@@ -11,7 +11,7 @@ type Props = {
   product: ProductItem;
 };
 
-export default function ProductInfo({ product }: Props) {
+export default function ProductPageInformation({ product }: Props) {
   const [quantity, setQuantity] = useState(1);
   const [showOverlay, setShowOverlay] = useState(false);
 

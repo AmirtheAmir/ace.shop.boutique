@@ -2,8 +2,8 @@
 
 import React from "react";
 import { FilterIcon } from "../../../../public/Icons";
-import AvailabilityFilter, { AvailabilityValue } from "./FilterAvailability";
-import PriceFilter, { PriceValue } from "./FilterPrice";
+import FilterAvailability, { AvailabilityValue } from "./FilterAvailability";
+import FilterPrice, { PriceValue } from "./FilterPrice";
 
 type Props = {
   showPrice?: boolean;
@@ -22,7 +22,7 @@ type Props = {
   };
 };
 
-export default function LeftSideFilter({
+export default function FilterContainerAP({
   showPrice = true,
   availabilityValue,
   priceValue,
@@ -41,7 +41,7 @@ export default function LeftSideFilter({
         <span>Filter</span>
       </div>
 
-      <AvailabilityFilter
+      <FilterAvailability
         value={availabilityValue}
         isOpen={availabilityOpen}
         onToggle={onToggleAvailability}
@@ -50,7 +50,7 @@ export default function LeftSideFilter({
       />
 
       {showPrice && (
-        <PriceFilter
+        <FilterPrice
           value={priceValue}
           isOpen={priceOpen}
           onToggle={onTogglePrice}

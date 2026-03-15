@@ -1,5 +1,5 @@
 type Props = { label: string; value: string; onChange: (v: string) => void };
-export default function FloatingSearchInputCurrency({
+export default function CurrencySearchInput({
   label,
   value,
   onChange,
@@ -30,3 +30,4 @@ export default function FloatingSearchInputCurrency({
     </div>
   );
 }
+

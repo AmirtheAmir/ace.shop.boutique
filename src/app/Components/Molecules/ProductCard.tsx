@@ -3,9 +3,9 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import ItemTitle from "../atoms/ProductTitle";
-import ItemPrice from "../atoms/ProductPrice";
-import SoldOutBadge from "../atoms/ProductSoldOutBadge";
+import ProductTitle from "../atoms/ProductTitle";
+import ProductPrice from "../atoms/ProductPrice";
+import ProductSoldOutBadge from "../atoms/ProductSoldOutBadge";
 import { useCurrency } from "@/context/CurrencyContext";
 import { getProductImageUrl } from "@/lib/storage";
 
@@ -53,7 +53,9 @@ export default function ProductCard({
       ].join(" ")}
     >
       <article
-        className={compact ? "flex items-center gap-3 w-full" : "flex flex-col"}
+        className={
+          compact ? "flex items-center gap-3 w-full" : "flex flex-col gap-2"
+        }
       >
         {/* Image */}
         <div className="relative flex flex-col">
@@ -61,7 +63,7 @@ export default function ProductCard({
             className={[
               "relative overflow-hidden bg-transparent transition-all duration-300 group-hover:ring-border-primary",
               compact
-                ? "w-[88px] h-[88px]"
+                ? "w-22 h-22"
                 : "w-full aspect-417/417 ring-1 ring-transparent",
             ].join(" ")}
           >
@@ -76,17 +78,17 @@ export default function ProductCard({
 
           {soldOut && showBadge && !compact && (
             <div className="absolute bottom-2 left-2">
-              <SoldOutBadge />
+              <ProductSoldOutBadge />
             </div>
           )}
         </div>
 
         {/* Info */}
         <div className="flex flex-col gap-1">
-          <ItemTitle className="group-hover:underline">{name}</ItemTitle>
+          <ProductTitle className="group-hover:underline">{name}</ProductTitle>
 
           {showPrice && !compact && (
-            <ItemPrice
+            <ProductPrice
               price={convertedPrice}
               oldPrice={convertedOldPrice}
               currencySymbol={selectedCurrency.symbol}

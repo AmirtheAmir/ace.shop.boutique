@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { CurrencyProvider } from "@/context/CurrencyContext";
-import NavigationBar from "@/app/components/organisms/Navigation";
-import FooterBar from "@/app/components/organisms/FooterContaienr";
+import Navigation from "@/app/components/organisms/Navigation";
+import FooterContaienr from "@/app/components/organisms/FooterContaienr";
 
 const sansFlex = localFont({
   src: [
@@ -39,9 +39,9 @@ export default function RootLayout({
       >
         <CurrencyProvider>
           <main className="max-w-7xl w-full m-2 flex flex-col gap-2">
-            <NavigationBar />
+            <Navigation />
             {children}
-            <FooterBar />
+            <FooterContaienr />
           </main>
         </CurrencyProvider>
       </body>

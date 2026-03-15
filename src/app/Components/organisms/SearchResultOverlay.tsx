@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { useRouter } from "next/navigation";
-import SearchResultContent from "../molecules/SearchResultContainer";
+import SearchResultContainer from "../molecules/SearchResultContainer";
 import { itemData } from "../../../data/ItemData";
 
 type Props = {
@@ -70,7 +70,7 @@ export default function SearchResultOverlay({
       <div className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm " />
 
       <div className="absolute left-0 top-full z-70 mt-px w-full ring ring-border-primary">
-        <SearchResultContent
+        <SearchResultContainer
           query={query}
           suggestions={suggestions}
           products={products}
@@ -82,3 +82,4 @@ export default function SearchResultOverlay({
     </>
   );
 }
+

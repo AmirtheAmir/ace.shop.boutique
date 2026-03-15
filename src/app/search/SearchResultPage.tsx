@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import FilterBar from "@/app/components/organisms/FilterContainer";
+import FilterContainer from "@/app/components/organisms/FilterContainer";
 import ProductCard from "@/app/components/molecules/ProductCard";
 import { itemData } from "@/data/ItemData";
 import { AvailabilityValue } from "@/app/components/molecules/FilterAvailability";
@@ -79,7 +79,7 @@ export default function SearchResultPage({ query }: Props) {
         Search Results For “{query}”
       </h1>
 
-      <FilterBar
+      <FilterContainer
         showPrice
         availabilityValue={availability}
         priceValue={price}

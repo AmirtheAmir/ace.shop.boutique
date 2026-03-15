@@ -1,5 +1,5 @@
 import React from "react";
-import FooterLink from "../atoms/FooterLinkItem";
+import FooterLinkItem from "../atoms/FooterLinkItem";
 
 const links = [
   "Return Policy",
@@ -10,11 +10,11 @@ const links = [
   "Contact Information",
 ];
 
-export default function FooterLinks() {
+export default function FooterPolicyLinks() {
   return (
     <div className="flex flex-wrap gap-4">
       {links.map((link) => (
-        <FooterLink key={link} label={link} />
+        <FooterLinkItem key={link} label={link} />
       ))}
     </div>
   );

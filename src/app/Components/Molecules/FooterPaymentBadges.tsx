@@ -1,5 +1,5 @@
 import React from "react";
-import PaymentCard from "../atoms/FooterPaymentBadge";
+import FooterPaymentBadge from "../atoms/FooterPaymentBadge";
 import {
   AmericanIcon,
   AppleIcon,
@@ -22,12 +22,13 @@ const payments = [
   { Icon: DiscoverIcon, alt: "Discover" },
 ];
 
-export default function FooterPayments() {
+export default function FooterPaymentBadges() {
   return (
     <div className="flex items-center gap-4">
       {payments.map((card) => (
-        <PaymentCard key={card.alt} Icon={card.Icon} alt={card.alt} />
+        <FooterPaymentBadge key={card.alt} Icon={card.Icon} alt={card.alt} />
       ))}
     </div>
   );
 }
+

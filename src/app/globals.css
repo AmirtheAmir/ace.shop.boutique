@@ -50,18 +50,17 @@
 .font-2XL-600 {
   font-family: var(--font-SansFlex), system-ui, sans-serif;
   font-weight: 600;
-  font-size: 96px;
-  line-height: 1.1; /* 110% */
-  letter-spacing: 0em; /* -1% */
+  font-size: clamp(66px, 16cqw, 96px);
+  line-height: 1.1;
+  letter-spacing: 0em;
 }
-
 
 .font-XL-500 {
   font-family: var(--font-SansFlex), system-ui, sans-serif;
   font-weight: 500;
   font-size: 28px;
   line-height: 1.5; /* 150% */
-  letter-spacing: 0em; /* -1% */
+  letter-spacing: 0.01em; /* -0% (treated as 0) */
 }
 
 .font-XL-600 {
@@ -69,7 +68,7 @@
   font-weight: 600;
   font-size: 28px;
   line-height: 1.5; /* 150% */
-  letter-spacing: 0em; /* -1% */
+  letter-spacing: 0.01em; /* -0% (treated as 0) */
 }
 
 .font-L-500 {
@@ -84,6 +83,13 @@
   font-family: var(--font-SansFlex), system-ui, sans-serif;
   font-weight: 600;
   font-size: 20px;
+  line-height: 1.5; /* 150% */
+  letter-spacing: 0.01em; /* -0% (treated as 0) */
+}
+.font-L-600-clamp {
+  font-family: var(--font-SansFlex), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(12px, 16cqw, 20px);
   line-height: 1.5; /* 150% */
   letter-spacing: 0.01em; /* -0% (treated as 0) */
 }
@@ -154,10 +160,10 @@
   letter-spacing: 0.035em; /* 3% */
 }
 
-.ringed-navbutton {
+.ringed-right {
   border-right: 1px solid var(--sand-dark-300);
 }
-.ringed-currencynavbutton {
+.ringed-left {
   border-left: 1px solid var(--sand-dark-300);
 }
 
