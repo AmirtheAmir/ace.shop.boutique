@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import SearchResultContainer from "../molecules/SearchResultContainer";
-import { itemData } from "../../../data/ItemData";
+import { fetchProducts } from "@/lib/api/products";
+import type { ProductItem } from "@/types/product";
 
 type Props = {
   query: string;
@@ -17,33 +18,47 @@ export default function SearchResultOverlay({
   onCloseOverlay,
 }: Props) {
   const router = useRouter();
+  const [allProducts, setAllProducts] = useState<ProductItem[]>([]);
 
   const normalizedQuery = query.trim().toLowerCase();
+
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        const data = await fetchProducts();
+        setAllProducts(data);
+      } catch (error) {
+        console.error("Failed to load search overlay products:", error);
+      }
+    }
+
+    loadProducts();
+  }, []);
 
   const suggestions = useMemo(() => {
     if (!normalizedQuery) return [];
 
-    const allTags = itemData.flatMap((item) => item.tags);
+    const allTags = allProducts.flatMap((item) => item.tags ?? []);
 
     return [...new Set(allTags)]
       .filter((tag) => tag.toLowerCase().includes(normalizedQuery))
       .slice(0, 4);
-  }, [normalizedQuery]);
+  }, [allProducts, normalizedQuery]);
 
   const products = useMemo(() => {
     if (!normalizedQuery) return [];
 
-    return itemData
+    return allProducts
       .filter((item) => {
         const matchName = item.name.toLowerCase().includes(normalizedQuery);
         const matchTag = item.tags.some((tag) =>
-          tag.toLowerCase().includes(normalizedQuery)
+          tag.toLowerCase().includes(normalizedQuery),
         );
 
         return matchName || matchTag;
       })
       .slice(0, 4);
-  }, [normalizedQuery]);
+  }, [allProducts, normalizedQuery]);
 
   if (!normalizedQuery) return null;
 
@@ -67,7 +82,7 @@ export default function SearchResultOverlay({
 
   return (
     <>
-      <div className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm " />
+      <div className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm" />
 
       <div className="absolute left-0 top-full z-70 mt-px w-full ring ring-border-primary">
         <SearchResultContainer
@@ -82,4 +97,3 @@ export default function SearchResultOverlay({
     </>
   );
 }
-

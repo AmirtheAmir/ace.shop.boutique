@@ -1,6 +1,7 @@
-import React from "react";
-import { itemData } from "@/data/ItemData";
 import ProductCard from "../molecules/ProductCard";
+import { supabase } from "@/lib/supabase";
+import { mapProductRow } from "@/lib/productMapper";
+import type { ProductRow } from "@/types/product";
 
 type Props = {
   currentProductId: string;
@@ -10,10 +11,32 @@ function shuffleArray<T>(array: T[]) {
   return [...array].sort(() => Math.random() - 0.5);
 }
 
-export default function ProductsRelated({ currentProductId }: Props) {
-  const randomProducts = shuffleArray(
-    itemData.filter((item) => item.id !== currentProductId)
-  ).slice(0, 3);
+export default async function ProductsRelated({ currentProductId }: Props) {
+  const { data, error } = await supabase
+    .from("products")
+    .select(`
+      id,
+      slug,
+      name,
+      main_image,
+      gallery,
+      price,
+      old_price,
+      sold_out,
+      tags,
+      collection,
+      description,
+      postdescription,
+      features
+    `)
+    .neq("id", currentProductId);
+
+  if (error) {
+    return null;
+  }
+
+  const products = ((data ?? []) as ProductRow[]).map(mapProductRow);
+  const randomProducts = shuffleArray(products).slice(0, 3);
 
   return (
     <section className="flex flex-col gap-2">

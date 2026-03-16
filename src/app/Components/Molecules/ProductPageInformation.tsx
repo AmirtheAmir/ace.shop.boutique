@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ProductItem } from "@/data/ItemData";
+import type { ProductItem } from "@/types/product";
 import QuantitySelector from "../atoms/QuantitySelector";
 import AddedToCartOverlay from "./AddedToCartOverlay";
 import { useCurrency } from "@/context/CurrencyContext";

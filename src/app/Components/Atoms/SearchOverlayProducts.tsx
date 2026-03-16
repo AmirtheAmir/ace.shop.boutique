@@ -1,7 +1,7 @@
 "use client";
 
-import { ProductItem } from "../../../data/ItemData";
 import ProductCard from "../molecules/ProductCard";
+import type { ProductItem } from "@/types/product";
 
 type Props = {
   products: ProductItem[];
@@ -40,4 +40,3 @@ export default function SearchOverlayProducts({
     </div>
   );
 }
-

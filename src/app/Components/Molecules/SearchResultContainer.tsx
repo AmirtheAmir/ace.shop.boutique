@@ -1,7 +1,7 @@
 "use client";
 
 import { RightArrowIcon } from "../../../../public/Icons";
-import { ProductItem } from "../../../data/ItemData";
+import type { ProductItem } from "@/types/product";
 import SearchOverlaySuggestion from "../atoms/SearchOverlaySuggestion";
 import SearchOverlayProducts from "../atoms/SearchOverlayProducts";
 
@@ -31,7 +31,10 @@ export default function SearchResultContainer({
           onSuggestionClick={onSuggestionClick}
         />
 
-        <SearchOverlayProducts products={products} onProductClick={onProductClick} />
+        <SearchOverlayProducts
+          products={products}
+          onProductClick={onProductClick}
+        />
       </div>
 
       <div className="flex justify-end">
@@ -47,4 +50,3 @@ export default function SearchResultContainer({
     </div>
   );
 }
-

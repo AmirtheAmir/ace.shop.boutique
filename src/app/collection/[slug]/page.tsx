@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import CollectionPageContainer from "@/app/components/organisms/CollectionPageContainer";
-import { itemData } from "@/data/ItemData";
+import { supabase } from "@/lib/supabase";
+import { mapProductRow } from "@/lib/productMapper";
+import type { ProductRow } from "@/types/product";
 
 const validSlugs = [
   "all",
@@ -30,10 +32,33 @@ export default async function CollectionPage({ params }: PageProps) {
     notFound();
   }
 
-  const products =
-    slug === "all"
-      ? itemData
-      : itemData.filter((item) => item.collection === slug);
+  let query = supabase.from("products").select(`
+    id,
+    slug,
+    name,
+    main_image,
+    gallery,
+    price,
+    old_price,
+    sold_out,
+    tags,
+    collection,
+    description,
+    postdescription,
+    features
+  `);
+
+  if (slug !== "all") {
+    query = query.eq("collection", slug);
+  }
+
+  const { data, error } = await query.order("name", { ascending: true });
+
+  if (error) {
+    notFound();
+  }
+
+  const products = ((data ?? []) as ProductRow[]).map(mapProductRow);
 
   return <CollectionPageContainer slug={slug} initialProducts={products} />;
 }

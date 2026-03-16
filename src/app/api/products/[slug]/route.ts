@@ -1,18 +1,16 @@
-import { notFound } from "next/navigation";
-import ProductPageDetails from "@/app/components/organisms/ProductPageDetails";
-import ProductsRelated from "@/app/components/organisms/ProductsRelated";
+import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { mapProductRow } from "@/lib/productMapper";
 import type { ProductRow } from "@/types/product";
 
 type Props = {
   params: Promise<{
-    productSlug: string;
+    slug: string;
   }>;
 };
 
-export default async function ProductPage({ params }: Props) {
-  const { productSlug } = await params;
+export async function GET(_: Request, { params }: Props) {
+  const { slug } = await params;
 
   const { data, error } = await supabase
     .from("products")
@@ -31,19 +29,17 @@ export default async function ProductPage({ params }: Props) {
       postdescription,
       features
     `)
-    .eq("slug", productSlug)
+    .eq("slug", slug)
     .single();
 
   if (error || !data) {
-    notFound();
+    return NextResponse.json(
+      { message: "Product not found" },
+      { status: 404 }
+    );
   }
 
   const product = mapProductRow(data as ProductRow);
 
-  return (
-    <main className="flex flex-col gap-2">
-      <ProductPageDetails product={product} />
-      <ProductsRelated currentProductId={product.id} />
-    </main>
-  );
+  return NextResponse.json(product);
 }

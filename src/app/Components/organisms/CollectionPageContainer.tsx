@@ -5,7 +5,7 @@ import ProductCard from "../molecules/ProductCard";
 import FilterContainer from "./FilterContainer";
 import { AvailabilityValue } from "../molecules/FilterAvailability";
 import { SortValue } from "../molecules/FilterRelevance";
-import { ProductItem } from "@/data/ItemData";
+import type { ProductItem } from "@/types/product";
 
 type Props = {
   slug: "all" | "classic" | "tactical" | "glasses" | "lighter" | "aggregat";
@@ -43,30 +43,34 @@ export default function CollectionPageContainer({
   }, [initialProducts]);
 
   const filteredProducts = useMemo(() => {
-    let result = [...initialProducts];
+    const result = [...initialProducts];
+
+    let filtered = result;
 
     if (availability === "in-stock") {
-      result = result.filter((item) => !item.soldOut);
+      filtered = filtered.filter((item) => !item.soldOut);
     }
 
     if (availability === "out-of-stock") {
-      result = result.filter((item) => item.soldOut);
+      filtered = filtered.filter((item) => item.soldOut);
     }
 
     if (sortValue === "price-low-high") {
-      result.sort((a, b) => a.price - b.price);
+      filtered.sort((a, b) => a.price - b.price);
     }
 
     if (sortValue === "price-high-low") {
-      result.sort((a, b) => b.price - a.price);
+      filtered.sort((a, b) => b.price - a.price);
     }
 
-    return result;
+    return filtered;
   }, [initialProducts, availability, sortValue]);
 
   return (
     <section className="flex flex-col gap-2 py-8">
-      <h1 className="text-center py-6 select-none font-L-600 text-text-primary uppercase">{titles[slug]}</h1>
+      <h1 className="text-center py-6 select-none font-L-600 text-text-primary uppercase">
+        {titles[slug]}
+      </h1>
 
       <FilterContainer
         showPrice={false}
@@ -123,4 +127,3 @@ export default function CollectionPageContainer({
     </section>
   );
 }
-

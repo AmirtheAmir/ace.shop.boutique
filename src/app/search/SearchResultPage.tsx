@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import FilterContainer from "@/app/components/organisms/FilterContainer";
 import ProductCard from "@/app/components/molecules/ProductCard";
-import { itemData } from "@/data/ItemData";
+import { fetchProducts } from "@/lib/api/products";
+import type { ProductItem } from "@/types/product";
 import { AvailabilityValue } from "@/app/components/molecules/FilterAvailability";
 import { PriceValue } from "@/app/components/molecules/FilterPrice";
 import { SortValue } from "@/app/components/molecules/FilterRelevance";
@@ -13,6 +14,9 @@ type Props = {
 };
 
 export default function SearchResultPage({ query }: Props) {
+  const [allProducts, setAllProducts] = useState<ProductItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
   const [availability, setAvailability] = useState<AvailabilityValue>(null);
   const [price, setPrice] = useState<PriceValue>(null);
   const [sort, setSort] = useState<SortValue>(null);
@@ -23,18 +27,33 @@ export default function SearchResultPage({ query }: Props) {
 
   const normalizedQuery = query.trim().toLowerCase();
 
-  const matchedProducts = useMemo(() => {
-    if (!normalizedQuery) return itemData;
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        const data = await fetchProducts();
+        setAllProducts(data);
+      } catch (error) {
+        console.error("Failed to load search page products:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-    return itemData.filter((item) => {
+    loadProducts();
+  }, []);
+
+  const matchedProducts = useMemo(() => {
+    if (!normalizedQuery) return allProducts;
+
+    return allProducts.filter((item) => {
       const inName = item.name.toLowerCase().includes(normalizedQuery);
-      const inTags = item.tags?.some((tag: string) =>
+      const inTags = item.tags?.some((tag) =>
         tag.toLowerCase().includes(normalizedQuery),
       );
 
       return inName || inTags;
     });
-  }, [normalizedQuery]);
+  }, [allProducts, normalizedQuery]);
 
   const counts = useMemo(() => {
     return {
@@ -73,8 +92,19 @@ export default function SearchResultPage({ query }: Props) {
     return result;
   }, [matchedProducts, availability, price, sort]);
 
+  if (loading) {
+    return (
+      <section className="flex flex-col gap-2 py-8">
+        <h1 className="text-center py-6 select-none font-L-600 text-text-primary">
+          Search Results For “{query}”
+        </h1>
+        <p className="font-M-500 text-text-primary">Loading products...</p>
+      </section>
+    );
+  }
+
   return (
-    <section className="flex flex-col gap-2 py-8 ">
+    <section className="flex flex-col gap-2 py-8">
       <h1 className="text-center py-6 select-none font-L-600 text-text-primary">
         Search Results For “{query}”
       </h1>

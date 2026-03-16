@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { ProductItem } from "@/data/ItemData";
+import type { ProductItem } from "@/types/product";
 import ProductPagesSideGallery from "../molecules/ProductPagesSideGallery";
 import ProductPageInformation from "../molecules/ProductPageInformation";
 

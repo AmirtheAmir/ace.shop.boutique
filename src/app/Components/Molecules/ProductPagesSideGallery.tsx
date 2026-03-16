@@ -10,7 +10,11 @@ type Props = {
   gallery: string[];
 };
 
-export default function ProductPagesSideGallery({ name, mainImage, gallery }: Props) {
+export default function ProductPagesSideGallery({
+  name,
+  mainImage,
+  gallery,
+}: Props) {
   const images = useMemo(() => [mainImage, ...gallery], [mainImage, gallery]);
   const [selectedImage, setSelectedImage] = useState(mainImage);
 
@@ -34,7 +38,7 @@ export default function ProductPagesSideGallery({ name, mainImage, gallery }: Pr
         ))}
       </div>
 
-      <div className="relative flex-1 ring self-stretch min-h-174">
+      <div className="relative flex-1 ring ring-transparent self-stretch min-h-174">
         <Image
           src={getProductImageUrl(selectedImage)}
           alt={name}
