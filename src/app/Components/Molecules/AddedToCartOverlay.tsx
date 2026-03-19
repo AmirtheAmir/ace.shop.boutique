@@ -53,7 +53,7 @@ export default function AddedToCartOverlay({
       <div className="flex flex-col gap-2">
         <Link
           href="/cart"
-          className="py-3.5 w-full ring font-M-500 ring-border-primary text-center"
+          className="py-3.5 w-full ring font-M-500 hover:bg-brand-tertiary transition-colors duration-300 ring-border-primary text-center"
         >
           View Cart ({cartCount})
         </Link>

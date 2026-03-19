@@ -38,9 +38,9 @@ export default function RootLayout({
         className={`${sansFlex.variable} font-sans items-center justify-center flex bg-bg-base`}
       >
         <CurrencyProvider>
-          <main className="max-w-7xl w-full m-2 flex flex-col gap-2">
+          <main className="max-w-7xl w-full min-h-screen mx-2 flex flex-col gap-2">
             <Navigation />
-            {children}
+            <div className="flex-1">{children}</div>
             <FooterContaienr />
           </main>
         </CurrencyProvider>

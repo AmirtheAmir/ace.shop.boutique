@@ -18,3 +18,4 @@ export { default as Check12Icon } from "./check12.svg";
 export { default as CheckIcon } from "./check.svg";
 export { default as RemoveIcon } from "./remove.svg";
 export { default as AddIcon } from "./add.svg";
+export { default as DeleteIcon } from "./delete.svg";

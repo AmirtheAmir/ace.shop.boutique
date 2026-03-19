@@ -36,6 +36,13 @@ export function getCartItemCount(): number {
   return readCart().reduce((total, item) => total + item.quantity, 0);
 }
 
+export function getCartTotal(): number {
+  return readCart().reduce(
+    (total, item) => total + item.unitPrice * item.quantity,
+    0,
+  );
+}
+
 export function addToCart(item: CartSessionItem) {
   const cart = readCart();
 
@@ -53,4 +60,25 @@ export function addToCart(item: CartSessionItem) {
   }
 
   writeCart(cart);
+}
+
+export function updateCartItemQuantity(id: string, quantity: number) {
+  const cart = readCart();
+
+  const updatedCart = cart.map((item) =>
+    item.id === id
+      ? {
+          ...item,
+          quantity: Math.max(1, quantity),
+        }
+      : item,
+  );
+
+  writeCart(updatedCart);
+}
+
+export function removeCartItem(id: string) {
+  const cart = readCart();
+  const updatedCart = cart.filter((item) => item.id !== id);
+  writeCart(updatedCart);
 }

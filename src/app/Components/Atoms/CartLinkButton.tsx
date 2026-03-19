@@ -27,7 +27,7 @@ export default function CartLinkButton({
       <CartIcon />
 
       {count > 0 && (
-        <span className="absolute -top-2.5 -right-2.5 min-w-5 h-5 w-5 flex items-center justify-center rounded-md bg-brand-primary font-XS-600 text-text-primary">
+        <span className="absolute -top-2.5 -right-2.5 min-w-5 h-5 w-5 flex items-center justify-center rounded-full bg-brand-primary font-XS-600 text-text-primary">
           {count}
         </span>
       )}

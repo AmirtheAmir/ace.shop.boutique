@@ -23,7 +23,7 @@ export default function QuantitySelector({
         onClick={onDecrease}
         disabled={isMin}
         className={[
-          "transition-colors duration-300",
+          "transition-colors cursor-pointer duration-300",
           isMin
             ? "text-text-tertiary cursor-not-allowed"
             : "text-text-primary hover:text-text-secondary",
@@ -37,7 +37,7 @@ export default function QuantitySelector({
       <button
         type="button"
         onClick={onIncrease}
-        className="text-text-primary transition-colors hover:text-text-secondary"
+        className="text-text-primary cursor-pointer transition-colors hover:text-text-secondary"
       >
         <AddIcon />
       </button>
