@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { CurrencyProvider } from "@/context/CurrencyContext";
-import Navigation from "@/app/components/organisms/Navigation";
-import FooterContaienr from "@/app/components/organisms/FooterContaienr";
+import AppShell from "@/app/components/organisms/AppShell";
 
 const sansFlex = localFont({
   src: [
@@ -14,7 +13,7 @@ const sansFlex = localFont({
     },
     {
       path: "./fonts/GoogleSansFlex-SemiBold.ttf",
-      weight: "600",
+      weight: "700",
       style: "normal",
     },
   ],
@@ -35,14 +34,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sansFlex.variable} font-sans items-center justify-center flex bg-bg-base`}
+        className={`${sansFlex.variable} font-sans min-h-screen flex justify-center bg-bg-base`}
       >
         <CurrencyProvider>
-          <main className="max-w-7xl w-full min-h-screen mx-2 flex flex-col gap-2">
-            <Navigation />
-            <div className="flex-1">{children}</div>
-            <FooterContaienr />
-          </main>
+          <AppShell>{children}</AppShell>
         </CurrencyProvider>
       </body>
     </html>

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 type Props = {
   label: string;
@@ -12,7 +13,7 @@ export default function FooterLinkItem({
   className = "",
 }: Props) {
   return (
-    <a
+    <Link
       href={href}
       className={[
         "font-XS-500 text-text-secondary",
@@ -22,6 +23,6 @@ export default function FooterLinkItem({
       ].join(" ")}
     >
       {label}
-    </a>
+    </Link>
   );
 }

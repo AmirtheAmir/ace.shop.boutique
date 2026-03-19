@@ -43,7 +43,7 @@ export default function CartPage() {
 
   return (
     <main className="content-in py-2 flex flex-col ">
-      <section className="flex flex-col py-6 gap-2 min-h-105">
+      <section className="flex flex-col py-6 gap-2 min-h-133">
         <h1 className="font-L-600 text-text-primary">
           {isEmpty ? "Your Cart Is Empty" : "Your Cart"}
         </h1>
