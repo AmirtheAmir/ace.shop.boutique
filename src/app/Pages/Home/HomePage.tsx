@@ -7,7 +7,10 @@ import { getStorageAsset } from "@/lib/storage";
 export default function HomePage() {
   return (
     <>
-      <HeroSection imageSrc={getStorageAsset("watch_banner.png")} />
+      <HeroSection
+        imageSrc={getStorageAsset("ferrari_banner.png")}
+        ctaHref="/product/testarossa-ferrari-1984"
+      />
 
       <div className="flex flex-col gap-4">
         <ProductGrid />

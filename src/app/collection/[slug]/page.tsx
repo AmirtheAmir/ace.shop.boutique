@@ -6,11 +6,11 @@ import type { ProductRow } from "@/types/product";
 
 const validSlugs = [
   "all",
-  "classic",
-  "tactical",
-  "glasses",
-  "lighter",
-  "aggregat",
+  "classics",
+  "modern",
+  "batman",
+  "speed_racer",
+  "ferrari",
 ] as const;
 
 type CollectionSlug = (typeof validSlugs)[number];

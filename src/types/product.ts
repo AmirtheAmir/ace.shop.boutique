@@ -1,9 +1,9 @@
 export type ProductCollection =
-  | "classic"
-  | "tactical"
-  | "glasses"
-  | "lighter"
-  | "aggregat";
+  | "classics"
+  | "modern"
+  | "batman"
+  | "speed_racer"
+  | "ferrari";
 
 export type ProductRow = {
   id: string;

@@ -83,7 +83,7 @@ export default function EmailInput({
       <div
         className={[
           "flex items-center select-none justify-between w-104 hover:bg-bg-surface p-3.5 border transition-colors",
-          isDuplicate ? "border-brand-supplementary" : "border-border-primary",
+          isDuplicate ? "border-brand-supplement-secondary" : "border-border-primary",
         ].join(" ")}
       >
         <div className="relative flex-1 h-full flex items-end">
@@ -122,7 +122,7 @@ export default function EmailInput({
           className={[
             "shrink-0 transition-colors",
             isDuplicate
-              ? "text-brand-supplementary"
+              ? "text-brand-supplement-secondary"
               : isSuccess
               ? "text-text-primary"
               : "text-text-secondary hover:text-text-primary",
@@ -143,10 +143,10 @@ export default function EmailInput({
           className={[
             "font-XS-600 select-none",
             isDuplicate
-              ? "text-brand-supplementary"
+              ? "text-brand-supplement-secondary"
               : isSuccess
               ? "text-text-primary"
-              : "text-brand-supplementary",
+              : "text-brand-supplement-secondary",
           ].join(" ")}
         >
           {message}

@@ -84,7 +84,7 @@ export default function Navigation() {
                     }}
                     className="flex items-center justify-center"
                   >
-                    <LogoIcon className="text-text-inverted hover:opacity-80 transition-opacity duration-200" />
+                    <LogoIcon className="text-brand-primary hover:opacity-80 transition-opacity duration-300" />
                   </Link>
                 </div>
 

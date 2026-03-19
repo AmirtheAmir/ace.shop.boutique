@@ -19,7 +19,7 @@ export default function SearchOverlayProducts({
       <div className="grid grid-cols-1 gap-3">
         {products.length > 0 ? (
           products.map((product) => (
-            <div key={product.id} onClick={onProductClick}>
+            <div className="hover:ring hover:ring-border-primary transition-all duration-300" key={product.id} onClick={onProductClick}>
               <ProductCard
                 slug={product.slug}
                 name={product.name}

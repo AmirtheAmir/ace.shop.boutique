@@ -47,7 +47,7 @@ export default function ProductCard({
       href={`/product/${slug}`}
       className={[
         compact
-          ? "flex items-center gap-3 group hover:bg-bg-subtle p-2 rounded-md"
+          ? "flex items-center gap-3 group "
           : "flex flex-col gap-2 group",
         className,
       ].join(" ")}

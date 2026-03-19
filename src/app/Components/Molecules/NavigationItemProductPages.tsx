@@ -17,28 +17,28 @@ export default function NavigationItemProductPages({ openMenu, setOpenMenu }: Pr
 
       <div className="relative">
         <NavigationLink
-          label="Watches"
+          label="Collectors"
           hasDropdown
-          active={openMenu === "watches"}
-          onClick={() => toggle("watches")}
+          active={openMenu === "collectors"}
+          onClick={() => toggle("collectors")}
         />
 
-        {openMenu === "watches" && (
+        {openMenu === "collectors" && (
           <div className="absolute left-0 top-12.25 z-50 flex w-45 flex-col gap-3 bg-bg-base p-3 ring ring-border-primary">
             <Link
-              href="/collection/classic"
+              href="/collection/speed_racer"
               onClick={() => setOpenMenu(null)}
               className="w-full text-left font-S-500 text-text-secondary transition-colors duration-200 ease-in hover:text-text-primary hover:underline hover:underline-offset-4"
             >
-              Classic
+              Speed Racer
             </Link>
 
             <Link
-              href="/collection/tactical"
+              href="/collection/batman"
               onClick={() => setOpenMenu(null)}
               className="w-full text-left font-S-500 text-text-secondary transition-colors duration-200 ease-in hover:text-text-primary hover:underline hover:underline-offset-4"
             >
-              Tactical
+              Batman
             </Link>
           </div>
         )}
@@ -46,35 +46,35 @@ export default function NavigationItemProductPages({ openMenu, setOpenMenu }: Pr
 
       <div className="relative">
         <NavigationLink
-          label="Accessories"
+          label="Motorsports"
           hasDropdown
-          active={openMenu === "accessories"}
-          onClick={() => toggle("accessories")}
+          active={openMenu === "motorsports"}
+          onClick={() => toggle("motorsports")}
         />
 
-        {openMenu === "accessories" && (
+        {openMenu === "motorsports" && (
           <div className="absolute left-0 top-12.25 z-50 flex w-45 flex-col gap-3 bg-bg-base p-3 ring ring-border-primary">
             <Link
-              href="/collection/glasses"
+              href="/collection/classics"
               onClick={() => setOpenMenu(null)}
               className="w-full text-left font-S-500 text-text-secondary transition-colors duration-200 ease-in hover:text-text-primary hover:underline hover:underline-offset-4"
             >
-              Glasses
+              Classics
             </Link>
 
             <Link
-              href="/collection/lighter"
+              href="/collection/modern"
               onClick={() => setOpenMenu(null)}
               className="w-full text-left font-S-500 text-text-secondary transition-colors duration-200 ease-in hover:text-text-primary hover:underline hover:underline-offset-4"
             >
-              Lighter
+              Modern
             </Link>
           </div>
         )}
       </div>
 
-      <Link href="/collection/aggregat" onClick={() => setOpenMenu(null)}>
-        <NavigationLink label="AGGREGAT" exclusive />
+      <Link href="/collection/ferrari" onClick={() => setOpenMenu(null)}>
+        <NavigationLink label="FERRARI" exclusive />
       </Link>
     </div>
   );

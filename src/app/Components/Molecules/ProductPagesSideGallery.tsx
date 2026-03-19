@@ -19,8 +19,8 @@ export default function ProductPagesSideGallery({
   const [selectedImage, setSelectedImage] = useState(mainImage);
 
   return (
-    <div className="xl:col-span-2 flex gap-4 min-h-174 items-stretch">
-      <div className="flex flex-col gap-4 w-32 shrink-0 h-full">
+    <div className="xl:col-span-2 flex gap-4 ">
+      <div className="flex flex-col gap-4 w-32 shrink-0 h-full ">
         {images.map((img, index) => (
           <button
             key={`${img}-${index}`}
@@ -38,7 +38,7 @@ export default function ProductPagesSideGallery({
         ))}
       </div>
 
-      <div className="relative flex-1 ring ring-transparent self-stretch min-h-174">
+      <div className="relative flex-1 ring ring-transparent ">
         <Image
           src={getProductImageUrl(selectedImage)}
           alt={name}

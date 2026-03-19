@@ -8,17 +8,17 @@ import { SortValue } from "../molecules/FilterRelevance";
 import type { ProductItem } from "@/types/product";
 
 type Props = {
-  slug: "all" | "classic" | "tactical" | "glasses" | "lighter" | "aggregat";
+  slug: "all" | "classics" | "modern" | "batman" | "speed_racer" | "ferrari";
   initialProducts: ProductItem[];
 };
 
 const titles: Record<Props["slug"], string> = {
   all: "ALL Collection",
-  classic: "CLASSIC Collection",
-  tactical: "TACTICAL Collection",
-  glasses: "GLASSES Collection",
-  lighter: "LIGHTER Collection",
-  aggregat: "AGGREGAT Collection",
+  classics: "CLASSICS  Collection",
+  modern: "MODERN Collection",
+  batman: "BATMAN Collection",
+  speed_racer: "SPEED RACER Collection",
+  ferrari: "FERRARI Collection",
 };
 
 export default function CollectionPageContainer({

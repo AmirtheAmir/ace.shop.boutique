@@ -3,20 +3,23 @@
 
 @theme {
   /* sand – Dark and Light colors */
-  --sand-light-50: #F6F5F4;
-  --sand-light-100: #F2F0EE;
-  --sand-light-200: #edebe8;
-  --sand-light-300: #e4e2dd;
-  --sand-light-400: #dbd8d1;
-  --sand-light-500: #c9c4ba;
-  --sand-light-600: #b7b1a4;
-  --sand-light-800: #897f6c;
-  --sand-dark-200: #171512;
-  --sand-dark-300: #22201b;
+  --sand-light-50: #EDECE7;
+  --sand-light-100: #EAE8E2;
+  --sand-light-200: #E9E8E2;
+  --sand-light-300: #E5E3DC;
+  --sand-light-400: #DCDAD0;
+  --sand-light-500: #CBC8B9;
+  --sand-light-600: #BAB6A1;
+  --sand-light-800: #8D8768;
+  --sand-dark-200: #171611;
+  --sand-dark-300: #1D1C16;
   /* Brand Primary colors */
-  --red-500: #fc1303;
+  --red-500: #FF1200;
+  --red-300: #FF3729;
+  --red-100: #FF8D85;
   /* Brand Supplement colors */
-  --orange-500: #fc5203;
+  --orange-500: #FFB200;
+  --orange-700: #D69600;
 
   /* Background */
   --color-bg-base: var(--sand-light-50);
@@ -35,7 +38,10 @@
   --color-text-inverted: var(--sand-light-50);
   /* Brand */
   --color-brand-primary: var(--red-500);
-  --color-brand-supplementary: var(--orange-500);
+  --color-brand-secondary: var(--red-300);
+  --color-brand-tertiary: var(--red-100);
+  --color-brand-supplement-primary: var(--orange-500);
+  --color-brand-supplement-secondary: var(--orange-700);
 }
 
 /* Base family: Google Sans Flex (CSS var) + fallbacks */

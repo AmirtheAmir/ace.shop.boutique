@@ -6,6 +6,7 @@ import QuantitySelector from "../atoms/QuantitySelector";
 import AddedToCartOverlay from "./AddedToCartOverlay";
 import { useCurrency } from "@/context/CurrencyContext";
 import styles from "../Molecules/Styles.module.css";
+import { addToCart, getCartItemCount } from "@/lib/cart";
 
 type Props = {
   product: ProductItem;
@@ -14,6 +15,7 @@ type Props = {
 export default function ProductPageInformation({ product }: Props) {
   const [quantity, setQuantity] = useState(1);
   const [showOverlay, setShowOverlay] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
 
   const { selectedCurrency, convertFromBase } = useCurrency();
 
@@ -34,8 +36,29 @@ export default function ProductPageInformation({ product }: Props) {
         }).format(oldPrice)
       : undefined;
 
+  useEffect(() => {
+    const updateCartCount = () => setCartCount(getCartItemCount());
+
+    updateCartCount();
+    window.addEventListener("cart-updated", updateCartCount);
+
+    return () => window.removeEventListener("cart-updated", updateCartCount);
+  }, []);
+
   const handleAddToCart = () => {
     if (product.soldOut) return;
+
+    addToCart({
+      id: product.id,
+      slug: product.slug,
+      name: product.name,
+      image: product.mainImage,
+      quantity,
+      unitPrice: price,
+    });
+
+    const updatedCount = getCartItemCount();
+    setCartCount(updatedCount);
     setShowOverlay(true);
   };
 
@@ -51,7 +74,7 @@ export default function ProductPageInformation({ product }: Props) {
 
   return (
     <>
-      <div className="flex h-174 max-w-104 flex-col justify-between gap-6">
+      <div className="flex h-104 max-w-104 flex-col justify-between gap-6">
         <div className="flex shrink-0 flex-col gap-4">
           <div className="flex flex-col gap-2">
             <h1 className="font-XL-500 select-none text-text-primary">
@@ -60,7 +83,7 @@ export default function ProductPageInformation({ product }: Props) {
 
             <div className="flex items-center gap-2">
               {formattedOldPrice && (
-                <span className="font-M-500 text-text-secondary line-through">
+                <span className="font-M-500 text-text-primary line-through">
                   {selectedCurrency.symbol}
                   {formattedOldPrice}
                 </span>
@@ -88,7 +111,7 @@ export default function ProductPageInformation({ product }: Props) {
               type="button"
               onClick={handleAddToCart}
               disabled={product.soldOut}
-              className="w-full px-9 py-3.5 font-M-600 text-text-primary ring ring-border-primary transition-colors hover:bg-bg-surface disabled:cursor-not-allowed disabled:text-text-secondary disabled:ring-border-secondary"
+              className="w-full px-9 py-3.5 font-M-600 text-text-primary ring ring-border-primary transition-colors hover:cursor-pointer hover:bg-bg-inverted hover:text-text-inverted duration-300 ease-in disabled:cursor-not-allowed disabled:text-text-secondary disabled:ring-border-secondary"
             >
               {product.soldOut ? "Sold Out" : "Add To Cart"}
             </button>
@@ -131,6 +154,8 @@ export default function ProductPageInformation({ product }: Props) {
         name={product.name}
         image={product.mainImage}
         quantity={quantity}
+        cartCount={cartCount}
+        onClose={() => setShowOverlay(false)}
       />
     </>
   );

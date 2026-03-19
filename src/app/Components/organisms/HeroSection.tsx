@@ -1,21 +1,23 @@
 "use client";
-import { RightArrowIcon } from "../../../../public/Icons";
+
 import React from "react";
+import Link from "next/link";
+import { RightArrowIcon } from "../../../../public/Icons";
 
 type Props = {
-  title?: string; // "AGGRAGAT CHRONO"
-  subtitle?: string; // "Mechanical Precision Redefined"
-  ctaLabel?: string; // "Check It Out"
-  onCtaClick?: () => void;
+  title?: string;
+  subtitle?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
   imageSrc?: string;
   className?: string;
 };
 
 export default function HeroSection({
-  title = "AGGRAGAT CHRONO",
-  subtitle = "Mechanical Precision Redefined",
+  title = "FERRARI TESTAROSSA",
+  subtitle = "The Desert Rose Of All Cars",
   ctaLabel = "Check It Out",
-  onCtaClick,
+  ctaHref = "/product/testarossa-ferrari-1984",
   imageSrc = "",
   className = "",
 }: Props) {
@@ -35,46 +37,37 @@ export default function HeroSection({
         />
 
         {/* Dark overlays */}
-        <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
-        <div
-          className="absolute inset-0 backdrop-blur-md"
-          style={{
-            maskImage:
-              "radial-gradient(circle at center, transparent 50%, black 90%)",
-            WebkitMaskImage:
-              "radial-gradient(circle at center, transparent 60%, black 90%)",
-          }}
-          aria-hidden="true"
-        />
+        <div className="absolute inset-0" aria-hidden="true" />
+        <div className="absolute inset-0" aria-hidden="true" />
 
-        {/* Content wrapper: right aligned block, left aligned text inside */}
-        <div className="relative h-full w-full flex  justify-end">
+        {/* Content wrapper */}
+        <div className="relative h-full w-full flex justify-start">
           <div className="w-1/2 content-in h-full p-4 @container flex flex-col justify-between text-left">
-            {/* Top: subtitle + title */}
-            <div className="select-none @container ">
-              <h2 className="mt-4 font-2XL-600 text-text-inverted leading-[0.95]">
+            {/* Top */}
+            <div className="select-none @container">
+              <h2 className="mt-4 font-2XL-600 text-text-primary leading-[0.95]">
                 {title}
               </h2>
-              <p className="font-L-600-clamp  text-text-inverted">{subtitle}</p>
+              <p className="font-L-600-clamp text-text-primary">{subtitle}</p>
             </div>
-            {/* Bottom: CTA bar */}
-            <div className="flex w-full justify-end">
-              <button
-                type="button"
-                onClick={onCtaClick}
+
+            {/* Bottom CTA */}
+            <div className="flex w-full justify-start">
+              <Link
+                href={ctaHref}
                 className={[
-                  " py-3.5 pl-9 pr-6 self-start font-M-600",
+                  "py-3.5 pl-9 pr-6 self-start font-M-600 backdrop-blur-sm",
                   "flex items-center justify-center gap-2",
-                  "text-brand-primary",
-                  "border border-brand-primary",
-                  "bg-transparent hover:cursor-pointer hover:bg-brand-primary hover:text-text-primary transition-colors duration-300 ease-in",
+                  "text-text-primary",
+                  "border border-border-primary",
+                  "bg-transparent hover:cursor-pointer hover:bg-bg-inverted hover:text-text-inverted transition-colors duration-300 ease-in",
                 ].join(" ")}
               >
                 {ctaLabel}
-                <span className="inline-flex items-center justify-center ">
+                <span className="inline-flex items-center justify-center">
                   <RightArrowIcon />
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

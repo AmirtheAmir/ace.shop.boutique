@@ -14,7 +14,7 @@ export default function ProductSoldOutBadge({
         "px-6 py-3",
         "border border-border-secondary",
         "bg-bg-surface",
-        "font-S-600 text-brand-primary",
+        "font-S-600 text-text-primary",
         className,
       ].join(" ")}
     >

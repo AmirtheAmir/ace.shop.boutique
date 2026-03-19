@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import NavigationIconButton from "../atoms/NavigationIconButton";
 import CurrencyButton from "../atoms/CurrencyButton";
-import { CartIcon, PersonIcon, SearchIcon } from "../../../../public/Icons";
+import CartLinkButton from "../atoms/CartLinkButton";
+import { PersonIcon, SearchIcon } from "../../../../public/Icons";
 import { CURRENCIES } from "../../../data/currencies";
 import { useCurrency } from "@/context/CurrencyContext";
 import styles from "./Styles.module.css";
 import CurrencySearchInput from "../atoms/CurrencySearchInput";
+import { getCartItemCount } from "@/lib/cart";
 
 type NavMode = "default" | "account" | "search";
 
@@ -25,6 +27,7 @@ export default function NavigationItemIcons({
   setNavMode,
 }: Props) {
   const [query, setQuery] = useState("");
+  const [cartCount, setCartCount] = useState(0);
   const { selectedCurrency, setSelectedCurrency } = useCurrency();
 
   const toggleCurrency = () => {
@@ -42,6 +45,20 @@ export default function NavigationItemIcons({
         c.country.toLowerCase().includes(q) || c.code.toLowerCase().includes(q),
     );
   }, [query]);
+
+  useEffect(() => {
+    const updateCartCount = () => {
+      setCartCount(getCartItemCount());
+    };
+
+    updateCartCount();
+
+    window.addEventListener("cart-updated", updateCartCount);
+
+    return () => {
+      window.removeEventListener("cart-updated", updateCartCount);
+    };
+  }, []);
 
   return (
     <div className="flex ring ring-border-primary">
@@ -67,9 +84,7 @@ export default function NavigationItemIcons({
           <PersonIcon />
         </NavigationIconButton>
 
-        <NavigationIconButton label="Cart">
-          <CartIcon />
-        </NavigationIconButton>
+        <CartLinkButton count={cartCount} href="/cart" />
       </div>
 
       <div className="relative">
@@ -82,7 +97,7 @@ export default function NavigationItemIcons({
         />
 
         {openMenu === "currency" && (
-          <div className="absolute right-0 top-12.25 gap-2 p-3 flex flex-col z-50 w-84 bg-bg-base ring ring-border-primary">
+          <div className="absolute right-0 top-12.25 gap-2 p-3 flex flex-col z-50 w-88 bg-bg-base ring ring-border-primary">
             <CurrencySearchInput
               label="Search"
               value={query}
@@ -137,4 +152,3 @@ export default function NavigationItemIcons({
     </div>
   );
 }
-
