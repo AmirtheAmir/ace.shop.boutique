@@ -7,7 +7,7 @@ import NavigationIconButton from "../atoms/NavigationIconButton";
 import CurrencyButton from "../atoms/CurrencyButton";
 import SearchResultOverlay from "../organisms/SearchResultOverlay";
 import { CartIcon, CloseIcon, PersonIcon } from "../../../../public/Icons";
-import { CURRENCIES } from "../../../data/currencies";
+import { CURRENCIES } from "@/data/currencies";
 import { useCurrency } from "@/context/CurrencyContext";
 import styles from "./Styles.module.css";
 

@@ -5,7 +5,7 @@ import NavigationIconButton from "../atoms/NavigationIconButton";
 import CurrencyButton from "../atoms/CurrencyButton";
 import CartLinkButton from "../atoms/CartLinkButton";
 import { PersonIcon, SearchIcon } from "../../../../public/Icons";
-import { CURRENCIES } from "../../../data/currencies";
+import { CURRENCIES } from "@/data/currencies";
 import { useCurrency } from "@/context/CurrencyContext";
 import styles from "./Styles.module.css";
 import CurrencySearchInput from "../atoms/CurrencySearchInput";
