@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 import AppShell from "@/app/components/organisms/AppShell";
+import { Analytics } from "@vercel/analytics/next";
 
 const sansFlex = localFont({
   src: [
@@ -37,7 +38,10 @@ export default function RootLayout({
         className={`${sansFlex.variable} font-sans min-h-screen flex justify-center bg-bg-base`}
       >
         <CurrencyProvider>
-          <AppShell>{children}</AppShell>
+          <AppShell>
+            {children}
+            <Analytics />
+          </AppShell>
         </CurrencyProvider>
       </body>
     </html>
