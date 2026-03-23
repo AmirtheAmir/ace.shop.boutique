@@ -17,7 +17,7 @@ export default function ViewAllButton({
       href={href}
       className={[
         "inline-flex px-9 py-3.5 items-center justify-center",
-        "bg-brand-primary",
+        "bg-brand-supplement-primary",
         "font-M-600 text-black",
         "hover:ring hover:ring-border-primary hover:bg-brand-secondary transition-all duration-300",
         className,
