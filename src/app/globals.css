@@ -28,14 +28,17 @@
   --color-bg-hover: var(--sand-light-300);
   --color-bg-scroll: var(--sand-light-400);
   --color-bg-inverted: var(--sand-dark-200);
+  
   /* Border */
   --color-border-primary: var(--sand-dark-300);
   --color-border-secondary: var(--sand-light-500);
+
   /* Text */
   --color-text-primary: var(--sand-dark-200);
   --color-text-secondary: var(--sand-light-800);
   --color-text-tertiary: var(--sand-light-600);
   --color-text-inverted: var(--sand-light-50);
+
   /* Brand */
   --color-brand-primary: var(--red-500);
   --color-brand-secondary: var(--red-300);
@@ -45,6 +48,13 @@
 }
 
 /* Base family: Google Sans Flex (CSS var) + fallbacks */
+.font-ace {
+  font-family: var(--font-microgramma);
+  font-size: 32px;
+  line-height: 1.37; /* 110% */
+  letter-spacing: 0.01em; /* -0% (treated as 0) */
+}
+
 .font-2XL-500 {
   font-family: var(--font-SansFlex), system-ui, sans-serif;
   font-weight: 500;

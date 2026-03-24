@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import NavigationIconButton from "../atoms/NavigationIconButton";
 import CurrencyButton from "../atoms/CurrencyButton";
 import CartLinkButton from "../atoms/CartLinkButton";
@@ -10,22 +11,22 @@ import { useCurrency } from "@/context/CurrencyContext";
 import styles from "./Styles.module.css";
 import CurrencySearchInput from "../atoms/CurrencySearchInput";
 import { getCartItemCount } from "@/lib/cart";
+import { getSupabase } from "@/lib/supabase";
 
-type NavMode = "default" | "account" | "search";
+type NavMode = "default" | "search";
 
 type Props = {
   openMenu: string | null;
   setOpenMenu: (v: string | null) => void;
-  navMode: NavMode;
   setNavMode: (v: NavMode) => void;
 };
 
 export default function NavigationItemIcons({
   openMenu,
   setOpenMenu,
-  navMode,
   setNavMode,
 }: Props) {
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const [cartCount, setCartCount] = useState(0);
   const { selectedCurrency, setSelectedCurrency } = useCurrency();
@@ -76,9 +77,20 @@ export default function NavigationItemIcons({
 
         <NavigationIconButton
           label="Account"
-          onClick={() => {
-            setNavMode(navMode === "account" ? "default" : "account");
+          onClick={async () => {
             setOpenMenu(null);
+            setQuery("");
+            const supabase = getSupabase();
+            if (!supabase) return;
+
+            const { data } = await supabase.auth.getSession();
+
+            if (data.session) {
+              router.push("/account?tab=profile");
+            } else {
+              setOpenMenu(null);
+              router.push("/auth");
+            }
           }}
         >
           <PersonIcon />

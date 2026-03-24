@@ -27,6 +27,17 @@ export const metadata: Metadata = {
   description: "Your Exclusive Watch Boutique",
 };
 
+export const microgramma = localFont({
+  src: [
+    {
+      path: "./fonts/Microgramma.otf",
+      style: "normal",
+    },
+  ],
+  variable: "--font-microgramma", 
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sansFlex.variable} font-sans min-h-screen flex justify-center bg-bg-base`}
+        className={`${sansFlex.variable} ${microgramma.variable} font-sans min-h-screen flex justify-center bg-bg-base`}
       >
         <CurrencyProvider>
           <AppShell>

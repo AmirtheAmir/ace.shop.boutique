@@ -1,20 +1,28 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import Overlay from "../atoms/Overlay";
 import NavigationItemProductPages from "../molecules/NavigationItemProductPages";
 import NavigationItemIcons from "../molecules/NavigationItemIcons";
 import NavigationSearchMode from "../molecules/NavigationSearchMode";
-import NavigationItemAccount from "../molecules/NavigationItemAccount";
+import NavigationItemProfileMode from "../molecules/NavigationItemProfileMode";
 import { LogoIcon } from "../../../../public/Icons";
-import Link from "next/link";
+import { getSupabase } from "@/lib/supabase";
 
-type NavMode = "default" | "account" | "search";
+type NavMode = "default" | "search" | "profile";
+type AccountTab = "profile" | "orders";
 
 export default function Navigation() {
+  const pathname = usePathname();
+  const isAccountRoute = pathname?.startsWith("/account") ?? false;
+  const router = useRouter();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const [navMode, setNavMode] = useState<NavMode>("default");
+  const [navMode, setNavMode] = useState<Exclude<NavMode, "profile">>("default");
+  const [accountTab, setAccountTab] = useState<AccountTab>("profile");
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const viewMode: NavMode = navMode === "search" ? "search" : isAccountRoute ? "profile" : "default";
 
   useEffect(() => {
     function onDown(e: MouseEvent) {
@@ -28,7 +36,7 @@ export default function Navigation() {
 
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        if (navMode === "search" || navMode === "account") {
+        if (navMode === "search") {
           setNavMode("default");
         }
         setOpenMenu(null);
@@ -43,6 +51,20 @@ export default function Navigation() {
       document.removeEventListener("keydown", onKey);
     };
   }, [navMode]);
+
+  const onSignOut = async () => {
+    const supabase = getSupabase();
+    if (!supabase) return;
+
+    await supabase.auth.signOut();
+    setNavMode("default");
+    router.replace("/auth");
+  };
+
+  const onSelectAccountTab = (tab: AccountTab) => {
+    setAccountTab(tab);
+    router.push(`/account?tab=${tab}`);
+  };
 
   const showOverlay = !!openMenu;
 
@@ -65,13 +87,17 @@ export default function Navigation() {
             <div className="w-full ring ring-border-primary">
               <div className="flex w-full">
                 <div className="shrink-0">
-                  {navMode === "account" ? (
-                    <NavigationItemAccount
-                      onSignOut={() => setNavMode("default")}
-                      onBackToDefault={() => setNavMode("default")}
+                  {viewMode === "profile" ? (
+                    <NavigationItemProfileMode
+                      activeTab={accountTab}
+                      onSelectTab={onSelectAccountTab}
+                      onSignOut={onSignOut}
                     />
                   ) : (
-                    <NavigationItemProductPages openMenu={openMenu} setOpenMenu={setOpenMenu} />
+                    <NavigationItemProductPages
+                      openMenu={openMenu}
+                      setOpenMenu={setOpenMenu}
+                    />
                   )}
                 </div>
 
@@ -84,7 +110,7 @@ export default function Navigation() {
                     }}
                     className="flex items-center justify-center"
                   >
-                    <LogoIcon className="text-brand-primary hover:opacity-80 transition-opacity duration-300" />
+                    <LogoIcon className="text-brand-primary transition-opacity duration-300 hover:opacity-80" />
                   </Link>
                 </div>
 
@@ -92,7 +118,6 @@ export default function Navigation() {
                   <NavigationItemIcons
                     openMenu={openMenu}
                     setOpenMenu={setOpenMenu}
-                    navMode={navMode}
                     setNavMode={setNavMode}
                   />
                 </div>
@@ -104,4 +129,3 @@ export default function Navigation() {
     </>
   );
 }
-

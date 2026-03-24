@@ -1,0 +1,31 @@
+import { EditIcon } from "../../../../public/Icons";
+import AccountSectionTitle from "../atoms/AccountSectionTitle";
+import AccountActionIconButton from "../atoms/AccountActionIconButton";
+import ProfileInfoList from "../molecules/ProfileInfoList";
+
+type Props = {
+  profileName: string;
+  profileEmail: string;
+  onEdit: () => void;
+};
+
+export default function ProfileOrganism({
+  profileName,
+  profileEmail,
+  onEdit,
+}: Props) {
+  return (
+    <section className="flex flex-col gap-3">
+      <AccountSectionTitle
+        title="Profile"
+        action={
+          <AccountActionIconButton label="Edit profile" onClick={onEdit}>
+            <EditIcon className="h-4 w-4" />
+          </AccountActionIconButton>
+        }
+      />
+
+      <ProfileInfoList name={profileName} email={profileEmail} />
+    </section>
+  );
+}

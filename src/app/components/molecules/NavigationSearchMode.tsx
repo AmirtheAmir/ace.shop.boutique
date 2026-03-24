@@ -10,6 +10,7 @@ import { CartIcon, CloseIcon, PersonIcon } from "../../../../public/Icons";
 import { CURRENCIES } from "@/data/currencies";
 import { useCurrency } from "@/context/CurrencyContext";
 import styles from "./Styles.module.css";
+import { getSupabase } from "@/lib/supabase";
 
 type Props = {
   openMenu: string | null;
@@ -66,11 +67,35 @@ export default function NavigationSearchMode({
             <CloseIcon />
           </NavigationIconButton>
 
-          <NavigationIconButton label="Account">
+          <NavigationIconButton
+            label="Account"
+            onClick={async () => {
+              onCloseSearch();
+              const supabase = getSupabase();
+              if (!supabase) {
+                router.push("/auth");
+                return;
+              }
+
+              const { data, error } = await supabase.auth.getSession();
+              if (error || !data.session) {
+                router.push("/auth");
+                return;
+              }
+
+              router.push("/account");
+            }}
+          >
             <PersonIcon />
           </NavigationIconButton>
 
-          <NavigationIconButton label="Cart">
+          <NavigationIconButton
+            label="Cart"
+            onClick={() => {
+              onCloseSearch();
+              router.push("/cart");
+            }}
+          >
             <CartIcon />
           </NavigationIconButton>
         </div>
