@@ -17,6 +17,9 @@ import useIsMobileNav from "@/app/hooks/useIsMobileNav";
 type NavMode = "default" | "search" | "profile";
 type AccountTab = "profile" | "orders";
 
+const MOBILE_MENU_KEY = "mobile-menu";
+const MOBILE_SUBMENU_PREFIX = "mobile-submenu:";
+
 export default function Navigation() {
   const pathname = usePathname();
   const isAccountRoute = pathname?.startsWith("/account") ?? false;
@@ -29,7 +32,12 @@ export default function Navigation() {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const viewMode: NavMode =
     navMode === "search" ? "search" : isAccountRoute ? "profile" : "default";
-  const isMobileMenuOpen = openMenu === "mobile-menu";
+  const isMobileMenuOpen =
+    openMenu === MOBILE_MENU_KEY ||
+    (openMenu?.startsWith(MOBILE_SUBMENU_PREFIX) ?? false);
+  const mobileSubmenuOpen = openMenu?.startsWith(MOBILE_SUBMENU_PREFIX)
+    ? openMenu.slice(MOBILE_SUBMENU_PREFIX.length)
+    : null;
   const showOverlay = !!openMenu;
 
   useEffect(() => {
@@ -96,11 +104,7 @@ export default function Navigation() {
                   {isMobileNav ? (
                     <NavigationBurgerButton
                       active={isMobileMenuOpen}
-                      onClick={() =>
-                        setOpenMenu((prev) =>
-                          prev === "mobile-menu" ? null : "mobile-menu",
-                        )
-                      }
+                      onClick={() => setOpenMenu(isMobileMenuOpen ? null : MOBILE_MENU_KEY)}
                     />
                   ) : viewMode === "profile" ? (
                     <NavigationItemProfileMode
@@ -154,8 +158,15 @@ export default function Navigation() {
                     />
                   ) : (
                     <NavigationItemProductPages
-                      openMenu={openMenu}
-                      setOpenMenu={setOpenMenu}
+                      openMenu={mobileSubmenuOpen}
+                      setOpenMenu={(value) => {
+                        if (value === null) {
+                          setOpenMenu(null);
+                          return;
+                        }
+
+                        setOpenMenu(`${MOBILE_SUBMENU_PREFIX}${value}`);
+                      }}
                     />
                   )}
                 </NavigationMobileMenu>
