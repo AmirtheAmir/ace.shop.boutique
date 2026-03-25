@@ -7,20 +7,22 @@ import { getStorageAsset } from "@/lib/storage";
 export default function HomePage() {
   return (
     <>
-      <HeroSection
-        imageSrc={getStorageAsset("ferrari_banner.png")}
-        ctaHref="/product/testarossa-ferrari-1984"
-      />
+      <div className="flex flex-col gap-2">
+        <HeroSection
+          imageSrc={getStorageAsset("ferrari_banner.png")}
+          ctaHref="/product/testarossa-ferrari-1984"
+        />
 
-      <div className="flex flex-col gap-4">
-        <ProductGrid />
+        <div className="flex flex-col gap-4">
+          <ProductGrid />
 
-        <div className="flex justify-center">
-          <ViewAllButton href="/collection/all" />
+          <div className="flex justify-center">
+            <ViewAllButton href="/collection/all" />
+          </div>
         </div>
-      </div>
 
-      <NewsletterSubscribe />
+        <NewsletterSubscribe />
+      </div>
     </>
   );
 }

@@ -24,3 +24,4 @@ export { default as EditAddressIcon } from "./editaddress.svg";
 export { default as AddAddressIcon } from "./add_address.svg";
 export { default as FinlandIcon } from "./finland.svg";
 export { default as AustraliaIcon } from "./australia.svg";
+export { default as MenuIcon } from "./menu.svg";

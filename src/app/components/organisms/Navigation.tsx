@@ -10,6 +10,9 @@ import NavigationSearchMode from "../molecules/NavigationSearchMode";
 import NavigationItemProfileMode from "../molecules/NavigationItemProfileMode";
 import { LogoIcon } from "../../../../public/Icons";
 import { getSupabase } from "@/lib/supabase";
+import NavigationBurgerButton from "../molecules/NavigationBurgerButton";
+import NavigationMobileMenu from "../molecules/NavigationMobileMenu";
+import useIsMobileNav from "@/app/hooks/useIsMobileNav";
 
 type NavMode = "default" | "search" | "profile";
 type AccountTab = "profile" | "orders";
@@ -19,10 +22,15 @@ export default function Navigation() {
   const isAccountRoute = pathname?.startsWith("/account") ?? false;
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const [navMode, setNavMode] = useState<Exclude<NavMode, "profile">>("default");
+  const [navMode, setNavMode] =
+    useState<Exclude<NavMode, "profile">>("default");
   const [accountTab, setAccountTab] = useState<AccountTab>("profile");
+  const isMobileNav = useIsMobileNav();
   const rootRef = useRef<HTMLDivElement | null>(null);
-  const viewMode: NavMode = navMode === "search" ? "search" : isAccountRoute ? "profile" : "default";
+  const viewMode: NavMode =
+    navMode === "search" ? "search" : isAccountRoute ? "profile" : "default";
+  const isMobileMenuOpen = openMenu === "mobile-menu";
+  const showOverlay = !!openMenu;
 
   useEffect(() => {
     function onDown(e: MouseEvent) {
@@ -66,14 +74,12 @@ export default function Navigation() {
     router.push(`/account?tab=${tab}`);
   };
 
-  const showOverlay = !!openMenu;
-
   return (
     <>
       <Overlay open={showOverlay} onClose={() => setOpenMenu(null)} />
 
       <div className="sticky top-2 z-50 w-full bg-bg-base">
-        <div ref={rootRef} className="w-full">
+        <div ref={rootRef} className="relative w-full">
           {navMode === "search" ? (
             <NavigationSearchMode
               openMenu={openMenu}
@@ -87,7 +93,16 @@ export default function Navigation() {
             <div className="w-full ring ring-border-primary">
               <div className="flex w-full">
                 <div className="shrink-0">
-                  {viewMode === "profile" ? (
+                  {isMobileNav ? (
+                    <NavigationBurgerButton
+                      active={isMobileMenuOpen}
+                      onClick={() =>
+                        setOpenMenu((prev) =>
+                          prev === "mobile-menu" ? null : "mobile-menu",
+                        )
+                      }
+                    />
+                  ) : viewMode === "profile" ? (
                     <NavigationItemProfileMode
                       activeTab={accountTab}
                       onSelectTab={onSelectAccountTab}
@@ -122,6 +137,29 @@ export default function Navigation() {
                   />
                 </div>
               </div>
+
+              {isMobileNav && isMobileMenuOpen && (
+                <NavigationMobileMenu>
+                  {viewMode === "profile" ? (
+                    <NavigationItemProfileMode
+                      activeTab={accountTab}
+                      onSelectTab={(tab) => {
+                        onSelectAccountTab(tab);
+                        setOpenMenu(null);
+                      }}
+                      onSignOut={async () => {
+                        await onSignOut();
+                        setOpenMenu(null);
+                      }}
+                    />
+                  ) : (
+                    <NavigationItemProductPages
+                      openMenu={openMenu}
+                      setOpenMenu={setOpenMenu}
+                    />
+                  )}
+                </NavigationMobileMenu>
+              )}
             </div>
           )}
         </div>

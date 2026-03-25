@@ -24,7 +24,7 @@ export default function HeroSection({
   return (
     <section
       className={[
-        "w-full h-130 overflow-hidden ring mt-2 ring-border-primary",
+        "w-full h-130 overflow-hidden ring ring-border-primary",
         className,
       ].join(" ")}
     >
