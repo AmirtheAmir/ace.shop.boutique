@@ -42,7 +42,7 @@ export default function HeroSection({
 
         {/* Content wrapper */}
         <div className="relative h-full w-full flex justify-start">
-          <div className="w-1/2 content-in h-full p-4 @container flex flex-col justify-between text-left">
+          <div className="sm:w-1/2 w-2/3 content-in h-full p-4 @container flex flex-col justify-between text-left">
             {/* Top */}
             <div className="select-none @container">
               <h2 className="mt-4 font-2XL-600 text-text-primary leading-[0.95]">

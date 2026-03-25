@@ -109,7 +109,7 @@ export default function NavigationItemIcons({
         />
 
         {openMenu === "currency" && (
-          <div className="absolute right-0 top-12.25 gap-2 p-3 flex flex-col z-50 w-88 bg-bg-base ring ring-border-primary">
+          <div className="absolute right-0 top-12.25 gap-2 p-3 flex flex-col z-50 w-73 bg-bg-base ring ring-border-primary">
             <CurrencySearchInput
               label="Search"
               value={query}

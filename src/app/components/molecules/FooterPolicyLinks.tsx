@@ -12,14 +12,12 @@ const links = [
 
 export default function FooterPolicyLinks() {
   return (
-    <div className="flex flex-wrap gap-4">
-      {links.map((link) => (
-        <FooterLinkItem
-          key={link.label}
-          label={link.label}
-          href={link.href}
-        />
-      ))}
+    <div className="flex flex-wrap gap-1 sm:gap-4">
+  {links.map((link) => (
+    <div key={link.label} className="w-[calc(50%-0.5rem)] sm:w-auto">
+      <FooterLinkItem label={link.label} href={link.href} />
     </div>
+  ))}
+</div>
   );
 }

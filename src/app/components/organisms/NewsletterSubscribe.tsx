@@ -79,7 +79,7 @@ export default function NewsletterSubscribe() {
           </h3>
         </div>
 
-        <div className="flex flex-row h-18 justify-between w-full">
+        <div className="flex flex-col sm:flex-row gap-4 justify-between w-full">
           <EmailInput
             value={email}
             onChange={handleChange}

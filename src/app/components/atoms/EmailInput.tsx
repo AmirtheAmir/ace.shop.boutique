@@ -82,7 +82,7 @@ export default function EmailInput({
     <div ref={wrapperRef} className={["flex flex-col gap-1", className].join(" ")}>
       <div
         className={[
-          "flex items-center select-none justify-between w-104 hover:bg-bg-surface p-3.5 border transition-colors",
+          "flex items-center select-none justify-between w-80 sm:w-104 hover:bg-bg-surface p-3.5 border transition-colors",
           isDuplicate ? "border-brand-supplement-secondary" : "border-border-primary",
         ].join(" ")}
       >

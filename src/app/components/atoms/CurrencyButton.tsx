@@ -22,10 +22,10 @@ export default function CurrencyButton({
       type="button"
       onClick={onClick}
       className={[
-        "  bg-bg-base border-none select-none hover:cursor-pointer flex justify-center w-57",
+        "  bg-bg-base border-none select-none hover:cursor-pointer flex justify-center ",
         "flex items-center gap-2 ringed-left",
         "font-S-500 text-text-primary",
-        "py-4 px-6 ",
+        "py-4 px-4 sm:px-6  ",
         active
           ? "underline underline-offset-4"
           : "hover:underline hover:underline-offset-4",
