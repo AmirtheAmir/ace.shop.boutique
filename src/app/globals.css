@@ -63,14 +63,14 @@
   letter-spacing: 0em; /* -1% */
 }
 
-.font-2XL-600 {
+@utility font-2XL-600 {
   font-family: var(--font-SansFlex), system-ui, sans-serif;
   font-weight: 700;
   font-size: 96px;
   line-height: 1.1;
   letter-spacing: 0em;
 }
-.font-2XL-600-v2 {
+@utility font-2XL-600-v2 {
   font-family: var(--font-SansFlex), system-ui, sans-serif;
   font-weight: 700;
   font-size: 44px;

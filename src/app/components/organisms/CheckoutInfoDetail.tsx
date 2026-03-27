@@ -435,8 +435,8 @@ export default function CheckoutInfoDetail({ onShippingContextChange }: Props) {
             />
           </div>
         ) : (
-          <p className="px-2 text-center font-L-500 text-text-primary">
-            You will be redirected to <span className="font-L-600">PayPal</span>{" "}
+          <p className="px-2 text-center font-M-500 text-text-primary">
+            You will be redirected to <span className="font-M-600 underline">PayPal</span>{" "}
             to complete your purchase afterwards.
           </p>
         )}
