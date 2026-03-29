@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { usePathname } from "next/navigation";
 import Navigation from "@/app/components/organisms/Navigation";
 import FooterContaienr from "@/app/components/organisms/FooterContaienr";
@@ -31,7 +31,16 @@ export default function AppShell({ children }: Props) {
       ].join(" ")}
     >
       <div className="max-w-7xl p-2  w-full min-h-screen flex flex-col gap-2">
-        <Navigation />
+        <Suspense
+          fallback={
+            <div
+              aria-hidden="true"
+              className="w-full h-14 ring ring-border-primary bg-bg-base"
+            />
+          }
+        >
+          <Navigation />
+        </Suspense>
         <div className="flex-1">{children}</div>
         <FooterContaienr />
       </div>
