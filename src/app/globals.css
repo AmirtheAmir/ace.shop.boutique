@@ -3,23 +3,23 @@
 
 @theme {
   /* sand – Dark and Light colors */
-  --sand-light-50: #EDECE7;
-  --sand-light-100: #EAE8E2;
-  --sand-light-200: #E9E8E2;
-  --sand-light-300: #E5E3DC;
-  --sand-light-400: #DCDAD0;
-  --sand-light-500: #CBC8B9;
-  --sand-light-600: #BAB6A1;
-  --sand-light-800: #8D8768;
-  --sand-dark-200: #171611;
-  --sand-dark-300: #1D1C16;
+  --sand-light-50: #EAEAEA;
+  --sand-light-100: #E6E6E6;
+  --sand-light-200: #E6E6E6;
+  --sand-light-300: #E0E0E0;
+  --sand-light-400: #D6D6D6;
+  --sand-light-500: #C2C2C2;
+  --sand-light-600: #ADADAD;
+  --sand-light-800: #7A7A7A;
+  --sand-dark-300: #1F1F1F;
+  --sand-dark-400: #292929;
+  --sand-dark-500: #3D3D3D;
   /* Brand Primary colors */
+  --red-700: #D60E00;
   --red-500: #FF1200;
   --red-300: #FF3729;
   --red-100: #FF8D85;
-  /* Brand Supplement colors */
-  --orange-500: #FFB200;
-  --orange-700: #D69600;
+
 
   /* Background */
   --color-bg-base: var(--sand-light-50);
@@ -27,14 +27,14 @@
   --color-bg-elevated: var(--sand-light-200);
   --color-bg-hover: var(--sand-light-300);
   --color-bg-scroll: var(--sand-light-400);
-  --color-bg-inverted: var(--sand-dark-200);
+  --color-bg-inverted: var(--sand-dark-300);
   
   /* Border */
-  --color-border-primary: var(--sand-dark-300);
+  --color-border-primary: var(--sand-dark-400);
   --color-border-secondary: var(--sand-light-500);
 
   /* Text */
-  --color-text-primary: var(--sand-dark-200);
+  --color-text-primary: var(--sand-dark-300);
   --color-text-secondary: var(--sand-light-800);
   --color-text-tertiary: var(--sand-light-600);
   --color-text-inverted: var(--sand-light-50);
@@ -43,8 +43,8 @@
   --color-brand-primary: var(--red-500);
   --color-brand-secondary: var(--red-300);
   --color-brand-tertiary: var(--red-100);
-  --color-brand-supplement-primary: var(--orange-500);
-  --color-brand-supplement-secondary: var(--orange-700);
+  --color-brand-supplement-primary: var(--sand-dark-500);
+  --color-brand-supplement-secondary: var(--red-700);
 }
 
 /* Base family: Google Sans Flex (CSS var) + fallbacks */
@@ -193,10 +193,10 @@
 }
 
 .ringed-right {
-  border-right: 1px solid var(--sand-dark-300);
+  border-right: 1px solid var(--sand-dark-400);
 }
 .ringed-left {
-  border-left: 1px solid var(--sand-dark-300);
+  border-left: 1px solid var(--sand-dark-400);
 }
 
 
