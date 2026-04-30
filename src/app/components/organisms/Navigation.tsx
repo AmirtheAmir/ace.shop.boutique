@@ -126,7 +126,7 @@ export default function Navigation() {
   return (
     <>
       {isRouteLoading && (
-        <div className="fixed inset-0 z-[70] bg-bg-base/85">
+        <div className="fixed inset-0 z-70 bg-bg-base/85">
           <ThreeDotLoader className="min-h-screen" />
         </div>
       )}
@@ -177,7 +177,7 @@ export default function Navigation() {
                     }}
                     className="flex items-center justify-center"
                   >
-                    <LogoIcon className="text-brand-primary transition-opacity duration-300 hover:opacity-80" />
+                    <LogoIcon className="text-brand-primary transition-opacity duration-300 hover:text-brand-secondary " />
                   </Link>
                 </div>
 

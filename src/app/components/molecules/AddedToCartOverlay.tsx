@@ -26,7 +26,7 @@ export default function AddedToCartOverlay({
   if (!open) return null;
 
   return (
-    <div className="fixed top-14.25 right-135 z-100 w-80 bg-bg-surface px-2 pt-4 pb-2 ring ring-border-primary flex flex-col gap-4">
+    <div className="fixed top-14.25 right-120 z-100 w-80 bg-bg-surface px-2 pt-4 pb-2 ring ring-border-primary flex flex-col gap-4">
       <p className="font-XS-600 flex flex-row gap-1 w-full justify-center text-brand-primary items-center">
         <Check12Icon />
         Item added to your cart successfully
