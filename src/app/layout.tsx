@@ -23,8 +23,8 @@ const sansFlex = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Ace Toyz",
-  description: "Your Exclusive Watch Boutique",
+  title: "Aruna",
+  description: "Collectible Toys",
 };
 
 export const microgramma = localFont({
